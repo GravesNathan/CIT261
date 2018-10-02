@@ -8,5 +8,68 @@
 </head>
 <body>
   <a href="index.html">Homepage</a>
+  <br />
+  <h1>JavaScript Objects</h1>
+  <p>
+    <b>Explanation:</b> By this point you should already know that variables in javascript hold data.  In javascript objects are variables that can should
+    multiple pieces of data.  We can compare ojects to people, places, or things in real life.  A car has a model, color, and year among other possible properties.
+    We can create an object to store these properties, allowing them to be read from and written to during an the execution of a webpage.
+  </p>
+  <h4>Creation and Properties</h4>
+  <p>
+    You can define and create an object as follows.<br /><br />
+    var newCar = {model:"Saturn",color:"Blue",year:"2019"};
+    <br /><br />This would create a variable object named newCar.  The words inside the braces are name:value
+    pairs separated by commas, and define what the object newCar contain.<br /><br />
+    The values contained in each property can be accessed in the following two formats<br /><br />
+    objectName.propertyName or objectName["propertyName"]<br /><br />
+  </p>
+  <h4>Functions and Object Methods</h4>
+  <p>
+    In many languages a function is a chunk of code that can be called upon to execute from elsewhere in a program.  JavaScript
+    is no different.  In JavaScript Objects can contain methods.  Methods are stored as object properties, but instead of simply
+    containing data the property name contains a function.  When the Object method is called the actions programmed in its function
+    statement are executed.<br /><br />
+    Continuing with our newCar variable from above, lets add a method that will allow us to get the newCar's current model.
+    The function would be written as such.<br /><br />
+    function(){<br />
+      return this.model;<br />
+    }<br /><br />
+    Or written on one line it would appear as below.<br /><br />
+    function(){return this.model;}<br /><br />
+    This would then be used as the "data" to be included in the methodName property.<br /><br />
+    var newCar = {model:"Saturn",color:"Blue",year:"2019",getModel:function(){return this.model;}};<br /><br />
+    Of course this can become a very confusing line so separating an Object into multiple lines as follows is quite common.
+    var newCar = {<br />
+    &nbsp;&nbsp;  model:"Saturn",<br />
+    &nbsp;&nbsp;  color:"Blue",<br />
+    &nbsp;&nbsp;  year:"2019",<br />
+    &nbsp;&nbsp;  getModel:function(){<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;    return this.model;<br />
+    &nbsp;&nbsp;  }<br />
+    };<br /><br />
+  </p>
+  <p>
+    <b5>Accessing Object Methods</b5>
+    An Object method wouldn't be very usful if you couldn't access it.  Object methods can be accessed using the
+    objectName.propertyName format from before but with a slight variation.  If I were to only use objectName.propertyName
+    I would get the entire function returned as data.  If I want the actual method to be executed I need to use two
+    parenthesis.  This would appear as objectName.propertyName() and is often used in an equation or when assigned to another
+    variable. I'll demonstrate with our example.<br /><br />
+
+    </p>
+  <script>
+    //Creation of object with method
+    var newCar = {
+      model:"Saturn",
+      color:"Blue",
+      year:"2019",
+      getModel:function(){
+        return this.model;
+      }
+    };
+  </script>
+  <h4>Inheritance</h4>
+  <h4>Instantiation</h4>
 </body>
 </html>
