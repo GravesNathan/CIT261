@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Objects</title>
-  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">
+  <!--<link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">-->
 </head>
 <body>
   <a href="index.html">Homepage</a>
@@ -20,11 +20,15 @@
   <h4>Creation and Properties</h4>
   <p>
     You can define and create an object as follows.<br /><br />
-    var newCar = {model:"Saturn",color:"Blue",year:"2019"};
-    <br /><br />This would create a variable object named newCar.  The words inside the braces are name:value
+
+    <i>var newCar = {model:"Saturn",color:"Blue",year:"2019"};</i>
+    <br /><br />
+
+    This would create a variable object named newCar.  The words inside the braces are name:value
     pairs separated by commas, and define what the object newCar contain.<br /><br />
     The values contained in each property can be accessed in the following two formats<br /><br />
-    objectName.propertyName or objectName["propertyName"]<br /><br />
+
+    <i>objectName.propertyName</i> &nbsp;&nbsp;or <br /><i>objectName["propertyName"]</i><br /><br />
   </p>
   <h4>Functions and Object Methods</h4>
   <p>
@@ -34,22 +38,27 @@
     statement are executed.<br /><br />
     Continuing with our newCar variable from above, lets add a method that will allow us to get the newCar's current model.
     The function would be written as such.<br /><br />
-    function(){<br />
+
+    <i>function(){<br />
       return this.model;<br />
     }<br /><br />
+    </i>
     Or written on one line it would appear as below.<br /><br />
     function(){return this.model;}<br /><br />
     This would then be used as the "data" to be included in the methodName property.<br /><br />
     var newCar = {model:"Saturn",color:"Blue",year:"2019",getModel:function(){return this.model;}};<br /><br />
-    Of course this can become a very confusing line so separating an Object into multiple lines as follows is quite common.
-    var newCar = {<br />
+    Of course this can become a very confusing line so separating an Object into multiple lines as follows is quite common.<br />
+    <br />
+
+    <i>var newCar = {<br />
     &nbsp;&nbsp;  model:"Saturn",<br />
     &nbsp;&nbsp;  color:"Blue",<br />
     &nbsp;&nbsp;  year:"2019",<br />
     &nbsp;&nbsp;  getModel:function(){<br />
-    &nbsp;&nbsp;&nbsp;&nbsp;    return this.model;<br />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return this.model;<br />
     &nbsp;&nbsp;  }<br />
-    };<br /><br />
+    };</i><br /><br />
+
   </p>
   <p>
     <b5>Accessing Object Methods</b5>
@@ -92,20 +101,24 @@
     In it's simplest form, to instantiate is to create an instance (or specific occurance) of something.
     Lets say we want to create a list of people with a first name, hair color, and age.  Instead of repeating
     the same code and changing attribute values, we can use a function that creates the objects for us.  Used this way
-    a "Person" function would be comparable to a "class" in other object oriented languages.  The function creates a blueprint
+    a "Person" function would be comparable to a "class" in other object oriented languages.  The function is a blueprint
     and we use that blueprint to create individual objects.  This is one method of instantiating.<br /><br />
 
     To do this we would first create the Person object as follows.<br /><br />
-    function Person(firstName, hairColor, age) {<br />
+
+    <i>function Person(firstName, hairColor, age) {<br />
         &nbsp;&nbsp;this.firstName = firstName;<br />
         &nbsp;&nbsp;this.hairColor = hairColor;<br />
         &nbsp;&nbsp;this.age = age;<br />
-    }</p>
+    }</i>
+  </p>
   <p>
     Then we could create a few people as follows.<br /><br />
-    var doctor = new Person("Bill","Black",38);<br />
+
+    <i>var doctor = new Person("Bill","Black",38);<br />
     var designer = new Person("Sarah","Brown", 27);<br />
     var tech = new Person("Joe","Blond",41);<br />
+    </i>
   </p>
   <script>
   function Person(firstName, hairColor, age) {
@@ -113,7 +126,6 @@
       this.hairColor = hairColor;
       this.age = age;
   }
-
   var doctor = new Person("Bill","Black",38);
   var designer = new Person("Sarah","Brown", 27);
   var tech = new Person("Joe","Blond",41);
