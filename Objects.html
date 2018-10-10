@@ -137,7 +137,61 @@
     In javascript, as with most programming languages, there are methods to have "children"
     objects inherit from "parent" objects.  This can be useful when we have a object who's properties and structure
     should be the same as or very similar to another object.<br /><br />
-  </p>
 
+    "When using JavaScript it can be helpful to think of inheritance with a "family" tree.
+    All JavaScript objects inherit properties and methods from a prototype...Date objects inherit from Date.prototype.
+    Array objects inherit from Array.prototype.  The Object.prototype is on the top of the prototype inheritance [tree].
+    Date objects, Array objects, and Person objects inherit from Object.prototype."<br />
+    https://www.w3schools.com/js/js_object_prototypes.asp (10-10-2018)<br /><br />
+
+    When you create an object it also inherits from it's respective "parent".  We can take
+    inheritance a step further by creating our own protoype, and then inheriting from it.
+
+  </p>
+  <!--Reference study performed at https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance 10-10-2018-->
+<script>
+//create generic user constructor function
+//Also create a static getInfo function that will be inherited with "this"
+function User(username, firstName, gender){
+  this.username=username;
+  this.firstName=firstName;
+  this.gender=gender;
+  this.getInfo=function(){
+    return this.username + ", " + this.firstName + ", " + this.gender;
+  }
+}
+//create employee and customer constructors by inheritance.
+function employee(username, firstName, gender, empNumber){
+//Note that Call(this) can be used to inherit all the properties from a parent.
+//without needing to define those that have constants or methods.  In this case getInfo
+//was inherited without being specified as a result.  I overrode it with an updated method
+//to contain the additional info.
+  User.call(this, username, firstName, gender);
+  this.empNumber=empNumber;
+  this.getInfo=function(){
+    return this.username + ", "+ this.firstName + ", " + this.gender +", " + this.empNumber;
+  }
+}
+function customer(username, firstName, gender, purchase){
+  User.call(this, username, firstName, gender);
+  this.purchase=purchase;
+  this.getInfo=function(){
+    return this.username + ", "+ this.firstName + ", " + this.gender + ", " + this.purchase;
+  }
+
+  //  return this.username + ", "+ this.firstName + ", " + this.gender +", " + this.empNumber;
+  //}
+}
+var employee1 = new employee("JoeB","Joe","M",1);
+var customer1 = new customer("JessG","Jessica","F","Sega Genesis");
+</script>
+
+<p>
+employee1 contains <b id="employee1"></b><br />
+customer1 contains <b id="customer1"></b><br />
+</p>
+
+<script>document.getElementById("employee1").innerHTML = employee1.getInfo()</script>
+<script>document.getElementById("customer1").innerHTML = customer1.getInfo()</script>
 </body>
 </html>
