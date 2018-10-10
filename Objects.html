@@ -146,9 +146,10 @@
 
     When you create an object it also inherits from it's respective "parent".  We can take
     inheritance a step further by creating our own protoype, and then inheriting from it.
-
+    Example code is included below.<br />
   </p>
-  <!--Reference study performed at https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance 10-10-2018-->
+<img src="ObjectExample.PNG" style="display:block; width: 90%; margin-left: auto; margin-right: auto;" />
+<!--Reference study performed at https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance 10-10-2018-->
 <script>
 //create generic user constructor function
 //Also create a static getInfo function that will be inherited with "this"
@@ -178,20 +179,23 @@ function customer(username, firstName, gender, purchase){
   this.getInfo=function(){
     return this.username + ", "+ this.firstName + ", " + this.gender + ", " + this.purchase;
   }
-
-  //  return this.username + ", "+ this.firstName + ", " + this.gender +", " + this.empNumber;
-  //}
 }
 var employee1 = new employee("JoeB","Joe","M",1);
 var customer1 = new customer("JessG","Jessica","F","Sega Genesis");
 </script>
 
 <p>
+  Here you'll see the results of the method calls:<br />
 employee1 contains <b id="employee1"></b><br />
 customer1 contains <b id="customer1"></b><br />
 </p>
 
 <script>document.getElementById("employee1").innerHTML = employee1.getInfo()</script>
 <script>document.getElementById("customer1").innerHTML = customer1.getInfo()</script>
+
+<p>
+  I want to note that some newer versions of Javascript include classes and super function that
+  closely relate to this topic.
+</p>
 </body>
 </html>
