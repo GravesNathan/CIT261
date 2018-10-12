@@ -9,6 +9,106 @@
 <body>
   <a href="index.html">Homepage</a>
   <h1>Local Storage API</h1>
+  <h2>Explanation</h2>
+  <p>
+    Local and session storage can be used (providing broser compatibility) to store key:value data that can exist
+    longer than a standard javascript object.  Session storage will exists so long as the browser remains open
+    and will be used on page reloads.  Local Storage exists on the local machine and will persist even if
+    the browser is closed and re-opened.<br />
+    <br />
+    Due to browser compatibility and/or privacy settings it is important to test that storage is available and allowed
+    before puttint it to use.  A function to test this is available at<br />
+    https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API<br />
+    <br />
+    Storage.getItem() is used to retrieve values from storage.  Those values are stored in variables (in this case)
+    and can then be used to update the webpage with the stored value.<br />
+    <br />
+    Storage.setItems() is used to create new data items and to update data items if they already exist.
+  </p>
+
+
+  <script>
+//********Test for Storage Compatibility**********
+  function storageAvailable(type) {
+      try {
+          var storage = window[type],
+              x = '__storage_test__';
+          storage.setItem(x, x);
+          storage.removeItem(x);
+          return true;
+      }
+      catch(e) {
+          return e instanceof DOMException && (
+              // everything except Firefox
+              e.code === 22 ||
+              // Firefox
+              e.code === 1014 ||
+              // test name field too, because code might not be present
+              // everything except Firefox
+              e.name === 'QuotaExceededError' ||
+              // Firefox
+              e.name === 'NS_ERROR_DOM_QUOTA_REACHED') &&
+              // acknowledge QuotaExceededError only if there's something already stored
+              storage.length !== 0;
+      }
+  }
+//Use the below functions to test if we can use storage before calling on them to use them.
+//Only use inside if statements to ensure not to crash a browser or cause other errors.
+//An else statement could be used to notify the user that they need to allow the API or use
+//A comptible browser.
+  if (storageAvailable('localStorage')) {
+  // Yippee! We can use localStorage awesomeness
+}
+else {
+  // Too bad, no localStorage for us
+}
+
+if (storageAvailable('sessionStorage')) {
+  // Yippee! We can use localStorage awesomeness
+}
+else {
+  // Too bad, no sessionStorage for us
+}
+  </script>
+
+<script>
+//***********Test if storage object has already been populated (aka page was previously accessed)
+if(!localStorage.getItem('bgcolor')) {
+  populateStorage();
+} else {
+  setStyles();
+}
+/*The Storage.getItem() method is used to get a data item from storage; in this case, we are testing to
+ see whether the bgcolor item exists; if not, we run populateStorage() to add the existing customization
+ values to the storage. If there are already values there, we run setStyles() to update the page styling
+ with the stored values.
+ Note: You could also use Storage.length to test whether the storage object is empty or not.*/
+
+//*********This function is used to set the currently loaded page to values that were stored from the last time it was visited.
+function setStyles() {
+  var currentColor = localStorage.getItem('bgcolor');
+  var currentFont = localStorage.getItem('font');
+  var currentImage = localStorage.getItem('image');
+
+  document.getElementById('bgcolor').value = currentColor;
+  document.getElementById('font').value = currentFont;
+  document.getElementById('image').value = currentImage;
+
+  htmlElem.style.backgroundColor = '#' + currentColor;
+  pElem.style.fontFamily = currentFont;
+  imgElem.setAttribute('src', currentImage);
+}
+
+//*******This function takes the values of the current page and stores them in storage.
+function populateStorage() {
+  localStorage.setItem('bgcolor', document.getElementById('bgcolor').value);
+  localStorage.setItem('font', document.getElementById('font').value);
+  localStorage.setItem('image', document.getElementById('image').value);
+
+  setStyles();
+}
+</script>
+
 <!--
   <div id="root"></div>
   <script src="main.js" type="text/javascript"></script>
