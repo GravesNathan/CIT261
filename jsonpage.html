@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jsonpage</title>
+<!--  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">-->
+</head>
+<body>
+  <a href="index.html">Homepage</a>
+  <br />
+  <h1>Json</h1>
+  <br />
+  <h2>What is Json?</h2>
+  <p>
+    Json is a language often used to store data as it is transmitted between servers.  This is because most languages
+    include a method of taking data, changing it into a json string, and then taking the json string and changing
+    it back into the original data type.  This allows servers to communicate across different computer lanugages and platforms
+    by simply using Json in between.    Also, note that JSON can store strings, numbers, objects, arrays, boolean, and null values.
+    It cannot be used for functions, dates, and when a value is undefined.
+  </p>
+<h2>Json format</h2>
+<p>
+  A Json string begins and ends with braces.  Inside the braces are name:value pairs separated by commas.
+The name of each "name":value pair must be enclosed in quotation marks.  The same is true of string values.
+An example Json string would be as follows.<br /><br />
+
+{"name":"John", "age": 50, "height": "6 feet", "hometown:Hillsbarrow"}<br /><br />
+
+Json can also contain arrays by using brackets to enclose the array as part of a value pair.<br /><br />
+
+{"name":"John", "age": 50, "height": "6 feet", "hometown":"Hillsbarrow", "children":["Jacob","Anabell","Bob","Kat"] }
+<br /><br />
+
+We can even create an Json string that contains an array which contains objects<br /><br />
+{"name":"John", "age": 50, "height": "6 feet", "hometown":"Hillsbarrow","children":[<br />
+&nbsp;&nbsp;{"name":"Jacob","age":15},<br />
+&nbsp;&nbsp;{"name":"Anabell","age":14},<br />
+&nbsp;&nbsp;{"name":"Bob","age":10},<br />
+&nbsp;&nbsp;{"name":"Kat","age":4}<br />
+] }
+</p>
+
+<h2>Reading Json data</h2>
+<p>
+  As you may have noticed the Json format coincides with that of the object format in Javascript.  Likewise, we can reference the information
+  contained in a json string much like we would in javascript.  (See example below)<br /><br />
+
+<i>&ltscript&gt<br />
+<!--Example read from object-->
+var myObj, x;<br />
+myObj = { name: "John", age: 30, city: "New York" };<br />
+x = myObj.name;<br />
+document.getElementById("demo").innerHTML = x;<br />
+
+&lt/script&gt</i><br />
+Example taken from https://www.w3schools.com/js/tryit.asp?filename=tryjson_object_access, 10-11-2018
+<br /><br />
+Note that we could also have used <i>x = myObj["name"];</i>
+</p>
+
+<h2>Json Parse</h2>
+<p>
+   Parsing Json takes a Json string and changes it into an object.  This is done with the JSON.parse method.<br /><br />
+
+<i>
+  &ltscript&gt<br />
+var txt = '{"name":"John", "age":30, "city":"New York"}'<br />
+var obj = JSON.parse(txt);<br />
+document.getElementById("demo").innerHTML = obj.name + ", " + obj.age;<br />
+&ltscript&gt<br />
+</i>
+Result: <b id=parseDemo></b>
+<br />
+Example from https://www.w3schools.com/js/tryit.asp?filename=tryjson_parse, 10-11-2018
+</p>
+<script>
+var txt = '{"name":"John", "age":30, "city":"New York"}'
+var obj = JSON.parse(txt);
+document.getElementById("parseDemo").innerHTML = obj.name + ", " + obj.age;
+</script>
+
+<h2>Json Stringify</h2>
+<p>
+  Taking an object (or other data type)  and changing it to a Json format in preparation for transport is know as Stringifying.
+  This is done witht he JSON.Stringify method.
+</p>
+
+<!--  <div id="root"></div>
+  <script src="main.js" type="text/javascript"></script>
+-->
+</body>
+</html>
