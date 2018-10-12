@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Basics</title>
+  <!--<link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">-->
+</head>
+<body>
+  <a href="index.html">Homepage</a>
+  <h1>JavaScript Basics</h1>
+  <p>
+    On this page I'll cover some common functions built into most modern programming lanuages.  The topics I'll
+    include are loops, conditioanl statements, functions, variables, parameters, arrays, and associative arrays.
+    As these topics are widely available I'll provide a simple explanation and a JavaScript example of each.  Credit for
+    the examples goes to w3schools.com.
+  </p>
+  <h2>Loops</h2>
+  <p>
+    Loops are used to repeat code a certain number of times so long as a condition holds true.  Different
+    loop types include do...while and for loops.  The contnue function can be used to jump out of a current
+    loop iteration and begin at the top of the loop.  Break is used to terminate a switch or loop.
+  </p>
+  <h2>Conditional statements</h2>
+  <p>
+    The two most popular conditional statements consist of if...else statements and the switch statement.
+    These are used to make decisions within a program based on current conditions.  An if...else statement is
+    usually preferred for small choices.  A switch statement is often used when many choices are avaialable to
+    make code easier to read and use.<br /><br />
+
+    If example<br />
+    <i>
+    if (hour < 18) {<br />
+    greeting = "Good day";<br />
+    }<br />
+    </i>
+    <br /><br />
+
+    If Else example<br />
+    <i>
+      if (hour < 18) {<br />
+      &nbsp;&nbsp;    greeting = "Good day";<br />
+      } else {<br />
+      &nbsp;&nbsp;    greeting = "Good evening";<br />
+      }<br />
+    </i>
+    <br /><br />
+
+    If Else If example<br />
+    <i>
+      if (time < 10) {<br />
+      &nbsp;&nbsp;    greeting = "Good morning";<br />
+      } else if (time < 20) {<br />
+      &nbsp;&nbsp;    greeting = "Good day";<br />
+      } else {<br />
+      &nbsp;&nbsp;    greeting = "Good evening";<br />
+      }<br />
+    </i>
+    <br /><br />
+
+    Switch example<br />
+    <i>
+      switch (new Date().getDay()) {<br />
+    case 0:<br />
+    &nbsp;&nbsp;    day = "Sunday";<br />
+    &nbsp;&nbsp;    break;<br />
+    case 1:<br />
+    &nbsp;&nbsp;    day = "Monday";<br />
+    &nbsp;&nbsp;    break;<br />
+    case 2:<br />
+    &nbsp;&nbsp;    day = "Tuesday";<br />
+    &nbsp;&nbsp;    break;<br />
+    case 3:<br />
+    &nbsp;&nbsp;    day = "Wednesday";<br />
+    &nbsp;&nbsp;    break;<br />
+    case 4:<br />
+    &nbsp;&nbsp;    day = "Thursday";<br />
+    &nbsp;&nbsp;    break;<br />
+    case 5:<br />
+    &nbsp;&nbsp;    day = "Friday";<br />
+    &nbsp;&nbsp;    break;<br />
+    case 6:<br />
+    &nbsp;&nbsp;    day = "Saturday";<br />
+    default:
+    &nbsp;&nbsp;    day = "Something went wrong.  Today doesn't have a defined name.";<br />
+      }
+    </i>
+    Note that the "defalt" keyboard is used to specify what happens if none of the previous cases matched our test statement.
+
+  </p>
+  <h2>Parameters and Functions</h2>
+  <p>
+    Functions are a set of instructions that can be carried out whenever the function is called.  This helps reduce
+    code redunancy by allowing a single body of code to be executed from anywhere on the page.  A return statement is used
+    to exit a function.  It can also be used to return data from within the function to the place it was originally called.
+    <br /><br />
+    Functions can have parameters in their function statements.  These are placeholder variables that can be used to store
+    information that is passed into the function when it is called.  If a function is called with less parameters than those
+    that are available in the functions head then the remaining parameters are set to undefined for the function interation.
+    <br /><br />
+    Simple function<br />
+    <i>function myFunction(a, b) {<br />
+    &nbsp;&nbsp;return a * b;<br />
+  }</i><br /><br />
+
+    Function call (or invoked)
+    <br /><i>
+    myFunction(10,2);
+  </i><br /><br />
+  fullName is an object method (covered in objects page).  The full name function is called using the .call method,
+  but is used on the person2 object.<br />
+<i>
+  var person = {<br />
+    &nbsp;&nbsp;fullName: function() {<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;return this.firstName + " " + this.lastName;<br />
+    &nbsp;&nbsp;}<br />
+  }<br />
+  var person1 = {<br />
+  &nbsp;&nbsp;  firstName:"John",<br />
+  &nbsp;&nbsp;  lastName: "Doe",<br />
+  }<br />
+  var person2 = {<br />
+    &nbsp;&nbsp;firstName:"Mary",<br />
+    &nbsp;&nbsp;lastName: "Doe",
+  }<br />
+  person.fullName.call(person2);  // Will return "Mary Doe"<br />
+</i><br />
+  The apply() method can also be used.  It is similar to the call() function, but takes arguments as arrays.  The call()
+  method takes arguments idividually.
+  </p>
+  <h2>Variables</h2>
+  <p>
+    Variables differ in javascript in that there is no assigned datatype durin declaration.  Instead the language
+    will choose a data type based on the information that is stored.  Variables can be created as follows.<br />
+    var x, y, z;
+    x = 5;
+    y = 6;
+    z = x + y;
+  </p>
+
+  <h2>Arrays</h2>
+  <p>
+    Arrays are a type of object which is used to contain a list.  Array entries are assigned numeric values beginning with
+    the value of 0 and incremented by 1.  The index is used when refering to specific items in the list.<br /><br />
+
+    Array Syntax:<br />
+    <i>var array_name = [item1, item2, ...];</i><br /><br />
+
+    Example:<br />
+    <i>var cars = ["Saab", "Volvo", "BMW"];</i><br /><br />
+
+    You can also use the JavaScript "new" keyword to create an new JavaScript Array type object.<br /><br />
+
+    Example<br />
+    <i>var cars = new Array("Saab", "Volvo", "BMW");</i>
+  </p>
+  <h2>Associative Arrays</h2>
+  <p>
+    It is important to note that JavaScript doesn't provide support for associative arrays.  If we try to create an associative array
+    JavaScript will instead interpret it as an object.  This will also produce confusion because we cannot use .length or other
+    standar array notations properly.  If you're looking for a key:value pairing it is better to simply create a proper object which
+    is covered in the object section.
+    <br /><br />
+    <i>
+    Bad "Associative" Array example (Don't use)<br />
+    var person = [];<br />
+    person["firstName"] = "John";<br />
+    person["lastName"] = "Doe";<br />
+    person["age"] = 46;<br />
+    var x = person.length;         // person.length will return 0<br />
+    var y = person[0];             // person[0] will return undefined<br />
+  </i><br />
+    Note that person["firstName"] will work, but creating an object properly is still recommended.
+  </p>
+
+<!--
+  <div id="root"></div>
+  <script src="main.js" type="text/javascript"></script>
+-->
+</body>
+</html>
