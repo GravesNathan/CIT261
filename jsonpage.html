@@ -83,8 +83,20 @@ document.getElementById("parseDemo").innerHTML = obj.name + ", " + obj.age;
 <h2>Json Stringify</h2>
 <p>
   Taking an object (or other data type)  and changing it to a Json format in preparation for transport is know as Stringifying.
-  This is done witht he JSON.Stringify method.
+  This is done with the JSON.Stringify method.<br /><br />
+
+  &ltscript&gt<br />
+  var arr = [ "John", "Peter", "Sally", "Jane" ];<br />
+  var myJSON = JSON.stringify(arr);<br />
+  document.getElementById("demo").innerHTML = myJSON;<br />
+  &lt/script&gt<br />
+  Result: <b id=StringifyDemo></b>
 </p>
+<script>
+var arr = [ "John", "Peter", "Sally", "Jane" ];
+var myJSON = JSON.stringify(arr);
+document.getElementById("StringifyDemo").innerHTML = myJSON;
+</script>
 
 <!--  <div id="root"></div>
   <script src="main.js" type="text/javascript"></script>
