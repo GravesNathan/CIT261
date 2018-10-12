@@ -23,7 +23,15 @@
     Storage.getItem() is used to retrieve values from storage.  Those values are stored in variables (in this case)
     and can then be used to update the webpage with the stored value.<br />
     <br />
-    Storage.setItems() is used to create new data items and to update data items if they already exist.
+    Storage.setItems() is used to create new data items and to update data items if they already exist.<br />
+    <br />
+    Whenever there is a change to local storage a storage event is triggered (this is not true for session storage).
+    This can be used by other webpages in the same domain in order to sync changes that are made.  Pages on other domains
+    cannot access the same storage objects.<br />
+    <br />
+    Two additional storage methods worth knowing are as follows:<br />
+    Storage.removeItem() takes a key value and removes it from the storage object.<br />
+    Storage.clear() takes no arguements and completely empties the entire storage object for the domain.<br />
   </p>
 
 
@@ -107,6 +115,24 @@ function populateStorage() {
 
   setStyles();
 }
+/*The populateStorage() function sets three items in local storage —
+ the background color, font, and image path. It then runs the setStyles() function to update the page styles, etc.*/
+
+ bgcolorForm.onchange = populateStorage;
+ fontForm.onchange = populateStorage;
+ imageForm.onchange = populateStorage;
+ /*We've also included an
+ onchange handler on each form element so that the data and styling are updated whenever a form value is changed:*/
+
+//****************Sample event listener user to watch for storage events and display storage values.
+window.addEventListener('storage', function(e) {
+  document.querySelector('.my-key').textContent = e.key;
+  document.querySelector('.my-old').textContent = e.oldValue;
+  document.querySelector('.my-new').textContent = e.newValue;
+  document.querySelector('.my-url').textContent = e.url;
+  document.querySelector('.my-storage').textContent = JSON.stringify(e.storageArea);
+});
+
 </script>
 
 <!--
