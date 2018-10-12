@@ -18,8 +18,54 @@
   <h2>Loops</h2>
   <p>
     Loops are used to repeat code a certain number of times so long as a condition holds true.  Different
-    loop types include do...while and for loops.  The contnue function can be used to jump out of a current
-    loop iteration and begin at the top of the loop.  Break is used to terminate a switch or loop.
+    loop types include do...while, while, for, and for/in loops.  The contnue function can be used to jump out of a current
+    loop iteration and begin at the top of the loop.  Break is used to terminate a switch or loop.<br /><br />
+
+    For Loop Example:<br />
+    <i>
+      var i;
+      for (i = 0; i < cars.length; i++) {
+          text += cars[i] + "<br>";
+      }
+      //warning that i++ is executed before each iteration in Javascript.  To do it after each iteration we can leave the third statment blank
+      and include i++; at the end of the loop.
+    </i>
+    <br /><br />
+
+    For/in Loop Example:<br />
+    <i>
+      var person = {fname:"John", lname:"Doe", age:25};
+
+      var text = "";
+      var x;
+      for (x in person) {
+          text += person[x];
+      }
+      //The for/in loop is used to loop through each of the properties of an object
+    </i>
+    <br /><br />
+
+    While Loop Example:<br />
+    <i>
+      while (i < 10) {
+          text += "The number is " + i;
+          i++;
+      }
+      //the while loop will execute so long as the test statement is true.  The statement is tested before the first iteration.
+    </i>
+    <br /><br />
+
+    Do-While Loop Example:<br />
+    <i>
+      do {
+          text += "The number is " + i;
+          i++;
+      }
+      while (i < 10);
+      //The do-while loop will execute at least once before the statment at the end is tested.  It will continue to
+      repeat so long as the statement is true at the end of each loop.
+    </i>
+    <br /><br />
   </p>
   <h2>Conditional statements</h2>
   <p>
