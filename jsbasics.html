@@ -23,47 +23,47 @@
 
     For Loop Example:<br />
     <i>
-      var i;
-      for (i = 0; i < cars.length; i++) {
-          text += cars[i] + "<br>";
-      }
+      var i;<br />
+      for (i = 0; i < cars.length; i++) {<br />
+          text += cars[i] + "&ltbr&gt";<br />
+      }<br />
       //warning that i++ is executed before each iteration in Javascript.  To do it after each iteration we can leave the third statment blank
-      and include i++; at the end of the loop.
+      and include i++; at the end of the loop.<br />
     </i>
     <br /><br />
 
     For/in Loop Example:<br />
     <i>
-      var person = {fname:"John", lname:"Doe", age:25};
+      var person = {fname:"John", lname:"Doe", age:25};<br />
 
-      var text = "";
-      var x;
-      for (x in person) {
-          text += person[x];
-      }
-      //The for/in loop is used to loop through each of the properties of an object
+      var text = "";<br />
+      var x;<br />
+      for (x in person) {<br />
+          text += person[x];<br />
+      }<br />
+      //The for/in loop is used to loop through each of the properties of an object<br />
     </i>
     <br /><br />
 
     While Loop Example:<br />
     <i>
-      while (i < 10) {
-          text += "The number is " + i;
-          i++;
-      }
-      //the while loop will execute so long as the test statement is true.  The statement is tested before the first iteration.
+      while (i < 10) {<br />
+          text += "The number is " + i;<br />
+          i++;<br />
+      }<br />
+      //the while loop will execute so long as the test statement is true.  The statement is tested before the first iteration.<br />
     </i>
     <br /><br />
 
     Do-While Loop Example:<br />
     <i>
-      do {
-          text += "The number is " + i;
-          i++;
-      }
-      while (i < 10);
+      do {<br />
+          text += "The number is " + i;<br />
+          i++;<br />
+      }<br />
+      while (i < 10);<br />
       //The do-while loop will execute at least once before the statment at the end is tested.  It will continue to
-      repeat so long as the statement is true at the end of each loop.
+      repeat so long as the statement is true at the end of each loop.<br />
     </i>
     <br /><br />
   </p>
@@ -129,9 +129,9 @@
     &nbsp;&nbsp;    day = "Saturday";<br />
     default:
     &nbsp;&nbsp;    day = "Something went wrong.  Today doesn't have a defined name.";<br />
-      }
+      }<br />
     </i>
-    Note that the "defalt" keyboard is used to specify what happens if none of the previous cases matched our test statement.
+    Note that the "default" keyboard is used to specify what happens if none of the previous cases matched our test statement.
 
   </p>
   <h2>Parameters and Functions</h2>
