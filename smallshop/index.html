@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Small Shop</title>
-<!--  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">-->
+
+<link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">
 </head>
 <body>
     <a href="../index.html">Homepage</a>
@@ -14,7 +15,61 @@
       local storage api to hold for later.  An empty cart button is built in to clear the contents of the cart.  I also plan to provide a method of saving
       and retrieving a cart via JSON.
     </p>
+    <p>
+      <table>
+        <tr>
+          <th>
+            Item Number
+          </th>
+          <th>
+            Product
+          </th>
+          <th>
+            Cost
+          </th>
+          <th>
 
+          </th>
+        </tr>
+        <tr>
+          <td id="row0num">
+          </td>
+          <td id="row0name">
+          </td>
+          <td id="row0cost">
+          </td>
+          <td>
+            <button id="0" onClick="addToCart(this.id);">Add to Cart</button>
+          </td>
+        </tr>
+        <tr>
+          <td id="row1num">
+          </td>
+          <td id="row1name">
+          </td>
+          <td id="row1cost">
+          </td>
+          <td>
+            <button id="1" onClick="addToCart(this.id);">Add to Cart</button>
+          </td>
+        </tr>
+        <tr>
+          <td id="row2num">
+          </td>
+          <td id="row2name">
+          </td>
+          <td id="row2cost">
+          </td>
+          <td>
+            <button id="2" onClick="addToCart(this.id);">Add to Cart</button>
+          </td>
+        </tr>
+      </table>
+
+        <button onclick="clearCart();">Clear Cart</button>
+    </p>
+    <p id="viewCart"></p>
+    <p>Total: <b id="total">0</b></p>
 <!--
 Shop plan
 Table to lay out the items for sell
@@ -35,8 +90,8 @@ Use Array of objects with name:itemName, Cost:PriceOfIten
 -->
 
 <!--
-  <div id="root"></div>
+  <div id="root"></div>-->
   <script src="main.js" type="text/javascript"></script>
--->
+
 </body>
 </html>
