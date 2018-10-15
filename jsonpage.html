@@ -17,7 +17,8 @@
     include a method of taking data, changing it into a json string, and then taking the json string and changing
     it back into the original data type.  This allows servers to communicate across different computer lanugages and platforms
     by simply using Json in between.    Also, note that JSON can store strings, numbers, objects, arrays, boolean, and null values.
-    It cannot be used for functions, dates, and when a value is undefined.
+    It <b>cannot</b> be used for functions and date data types, nor when a value is undefined.  The Json.Stringify funtion (covered later)
+    will remove functions and date data from an object in the process of creating the Json string.
   </p>
 <h2>Json format</h2>
 <p>
@@ -98,6 +99,11 @@ var myJSON = JSON.stringify(arr);
 document.getElementById("StringifyDemo").innerHTML = myJSON;
 </script>
 
+<p>
+  One thought I had was, "Why bother converting to and from Json in javascript?  They follow the same format so is there a different?"  Though the formatting is the same
+  there JSON is unique in it's ability to be desplayed as text on a screen without needing getter functions.  JSON is also used to communicate information from one server to another,
+  Javascript is generally ran within a web browers and stays in the browser.
+</p>
 <!--  <div id="root"></div>
   <script src="main.js" type="text/javascript"></script>
 -->
