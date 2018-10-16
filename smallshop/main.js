@@ -44,6 +44,9 @@ function clearCart(){
   cartLength = 0;
   document.getElementById("viewCart").innerHTML = "";
   document.getElementById("total").innerHTML = "0"
+  document.getElementById("jsonCart").innerHTML = "";
+  document.getElementById("importCart").innerHTML = "";
+  document.getElementById("total2").innerHTML = "0";
 }
 
 function viewCart(){
