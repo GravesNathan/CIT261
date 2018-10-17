@@ -7,9 +7,10 @@
 
 <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">
 </head>
-<body>
+<body onload="retreiveCart()">
     <a href="../index.html">Homepage</a>
     <h1>Small Shop Demo</h1>
+    <p id="storageNotice" style="color:blue;"></p>
     <p>
       This page utilizes basic JavaScript functions and Objects to simulate a simple game shop.  A users current cart can be stored using
       local storage api to hold for later.  An empty cart button is built in to clear the contents of the cart.  I also plan to provide a method of saving

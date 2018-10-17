@@ -20,11 +20,13 @@
     before puttint it to use.  A function to test this is available at<br />
     https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API<br />
     <br />
-    Storage.getItem() is used to retrieve values from storage.  Those values are stored in variables (in this case)
+    <b>localStorage.getItem('keyName','keyValue')</b> is used to retrieve values from storage.  Those values are stored in variables (in this case)
     and can then be used to update the webpage with the stored value.<br />
     <br />
-    Storage.setItems() is used to create new data items and to update data items if they already exist.<br />
+    <b>localStorage.setItem('keyName','keyValue')</b> is used to create new data items and to update data items if they already exist.<br />
     <br />
+    *Note that sessionStorage can be used in place of localStorage when desired.
+    <br /><br />
     Whenever there is a change to local storage a storage event is triggered (this is not true for session storage).
     This can be used by other webpages in the same domain in order to sync changes that are made.  Pages on other domains
     cannot access the same storage objects.<br />
@@ -32,6 +34,10 @@
     Two additional storage methods worth knowing are as follows:<br />
     Storage.removeItem() takes a key value and removes it from the storage object.<br />
     Storage.clear() takes no arguements and completely empties the entire storage object for the domain.<br />
+    <br />
+    I also want to note that in Google Chrome (and likely other) developer tools you can view local storage from a website.
+    An image below shows an example.<br /><br />
+    <img src="DeveloperToolsLocalStorage.PNG" style="display:block; width: 90%; margin-left: auto; margin-right: auto; max-width:800px;" />
   </p>
 
 
@@ -72,7 +78,7 @@ else {
 }
 
 if (storageAvailable('sessionStorage')) {
-  // Yippee! We can use localStorage awesomeness
+  // Yippee! We can use sessionStorage awesomeness
 }
 else {
   // Too bad, no sessionStorage for us
