@@ -153,3 +153,9 @@ function retreiveCart(){
   }
 
 }
+
+//*****************Here we work on adding a "support" "chat"*********
+function getSupport(){
+  document.getElementById('support').innerHTML = ('Hello, my name is computer.  What questions can I answer for you today?'); {
+  }
+}

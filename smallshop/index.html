@@ -14,9 +14,15 @@
     <p>
       This page utilizes basic JavaScript functions and Objects to simulate a simple game shop.  A users current cart can be stored using
       local storage api to hold for later.  An empty cart button is built in to clear the contents of the cart.  I also plan to provide a method of saving
-      and retrieving a cart via JSON.
+      and retrieving a cart via JSON.<br />
+      <br />
+      I'm working on adding Ajax to either update pricing or to provide a user item description.
+      I could also use it to update the most "popular" purchase (though it's only based on local
+      storage without a database).  A chat box for "support" would be fun.<br />
+      I'll probably include video, images, and audio descriptions later.
     </p>
-    <p>
+<div class='left'>
+      <p>
       <table>
         <tr>
           <th>
@@ -66,7 +72,6 @@
           </td>
         </tr>
       </table>
-
         <button onclick="clearCart();">Clear Cart</button>
         <button onclick="exportCart();">Export Cart</button>
         <button onclick="importCart();">Import Cart</button>
@@ -77,25 +82,12 @@
     <p>Json "Export" Test:<b id="jsonCart"></b></p>
     <p>"Import" Cart Test: <br /><b id="importCart"></b></p>
     <p>Total: <b id="total2">0</b></p>
-<!--
-Shop plan
-Table to lay out the items for sell
-Items include: Sega Genesis, Nintedo, Super Nintendo, Nintendo 64, PlayStation, PlayStation 2, X box
-Allow quantity to be added.
-Use two pages.  One to shop.  One for current cart.
-Default for each item quantity will be zero.
-Add to cart will take existing item number and add 1 to it.
-Clear cart will remove from local storage
-Remove item will remove it from local storage
-
-Export Cart will export the items and quantities via JSON
-Import will import a Json file, load into local storage, and update quantities on the webpage. (erasing current values)
-
-An item on page will show current total items in cart and will be updated or changed when items are added, removed, imported, or cleared.
-
-Use Array of objects with name:itemName, Cost:PriceOfIten
--->
-
+</div>
+<div class='right' id='support'>
+  <p>
+    <button onClick='getSupport()'>Get Support</button>
+  </p>
+</div>
 <!--
   <div id="root"></div>-->
   <script src="main.js" type="text/javascript"></script>

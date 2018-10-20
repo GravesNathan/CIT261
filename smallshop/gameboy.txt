@@ -1,0 +1,3 @@
+The original Gameboy was one of the earliest handheld portable systems made by Nintendo.  Game cartridges
+were used to both play and save games.  It requires batteries to operate.  Games were generally
+in black and white rather than color.
