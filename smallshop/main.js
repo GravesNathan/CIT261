@@ -187,3 +187,5 @@ function getRequest(){
   xmlhttp.open('GET', 'https://api.opendota.com/api/heroStats', true);
   xmlhttp.send();
 }
+
+//****Note to Self.  Heros have images I can use.**********
