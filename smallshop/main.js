@@ -166,47 +166,6 @@ function prepPage(){
   retreiveCart();
 }
 
-//process the Request
-/*
-function getRequest(){
-  var xmlhttp = new XMLHttpRequest();//Note capitalization matters in JavaScript
-  if (!xmlhttp){
-    document.getElementById('gameStats').innerHTML = ('Unable to create XMLHTTP instance at this time.');
-    return false;
-  }
-  xmlhttp.onreadystatechange = checkXMLHttpRequest(xmlhttp);
-  xmlhttp.open('GET', 'https://api.opendota.com/api/heroStats', true);
-  xmlhttp.send();
-  alert('does this work?');
-}
-
-
-//Wait for request to be completed, then do stuff
-function checkXMLHttpRequest(xmlhttp){
-  if (xmlhttp.readState === 4){//Could also use status 4
-    if (xmlhttp.status === 200) {
-      //do stuff with data
-      alert('data about to be received');
-      var data = JSON.parse(xmlhttp.responseText);
-      alert('data received');
-      displayData(data);
-      //document.getElementById('gameStats').innerHTML = (xmlhttp.responseText);
-      //Under network tab of dev tools in browser I found herostats as json code.
-    } else {
-      //alert('an error occured with the request.')
-      document.getElementById('gameStats').innerHTML = ('An error occured with the request.');
-    }
-  }
-}
-
-function displayData(data){
-  i=0;
-  for (i in data){
-    jsonString += 'test' + data[i].localized_name + ' ' + data[i].primary_attr + ' ' + data[i].roles + '<br />';
-  }
-  document.getElementById('gameStats').innerHTML = jsonString;
-}
-*/
 function getRequest(){
   var xmlhttp = new XMLHttpRequest();
   //Script of what to do once the request is complete.  This may seem odd, but it is written
