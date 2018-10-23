@@ -10,8 +10,11 @@
   <a href="index.html">Homepage</a>
   <h1>Using XMLHTTPRequest to Consume a JSON Web Service, Ajax</h1>
 
-  <h2>XMLHTTPRequest</h2>
+  <h2>XMLHTTPRequest (XHR)</h2>
 <p>
+  XMLHTTPRequest are often used to get information from third party server in order to use it
+  on a webpage.  This page shows example syntax and has a detailed explanation.<br />
+  <a href='https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open'>https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/open</a><br /><br />
   This example shows the loading of JSON string contained in a text file using HTTPRequest.
   (credit for example goes to W3Schools)
   <br />
@@ -25,7 +28,7 @@
 <br />    &nbsp;&nbsp;&nbsp;&nbsp;        myFunction(myArr);
 <br />    &nbsp;&nbsp;    }
 <br />    };
-<br />    xmlhttp.open("GET", url, true);
+<br />    xmlhttp.open("GET", url, false);<b> //change to true for Asynchronous request as shown later</b>
 <br />    xmlhttp.send();
 <br />
 <br />    function myFunction(arr) {
@@ -51,7 +54,7 @@
           myFunction(myArr);
       }
   };
-  xmlhttp.open("GET", url, true);
+  xmlhttp.open("GET", url, false);
   xmlhttp.send();
 
   function myFunction(arr) {
@@ -70,11 +73,14 @@
   <h2>Ajax</h2>
   <p>
     Ajax (<b>A</b>synchronous <b>Ja</b>vaScript and <b>X</b>ML)can be used to perform many of the same request performed by XMLHTTPRequest.
-    Unlike the traditional method Ajax can be used to perform Asynchronous request.  This allows the parts of a webpage that are affected
+    As the name indicates Ajax can be used to perform Asynchronous request.  This allows the parts of a webpage that are affected
     to be upated without the need of refreshing the page.  As a result the end user experience is much faster and smoother.
     <br /><br />
     <a href='https://www.w3schools.com/xml/ajax_intro.asp'>WeSchools</a> has a good chapter on this topic.
-    A quick guide (though perhaps slightly outdated) on Ajax can be found <a href='https://www.tutorialspoint.com/ajax/ajax_quick_guide.htm'>here</a>.
+    Another guide (though perhaps slightly outdated) on Ajax can be found <a href='https://www.tutorialspoint.com/ajax/ajax_quick_guide.htm'>here</a>.
+
+    <br /><br /> I found this <b>step by step</b> guide on using<a href='https://developer.mozilla.org/en-US/docs/Web/Guide/AJAX/Getting_Started'>
+    Asynchronous XMLHttpRequest</a> helpful as well.
   </p>
   <br />
   <p>

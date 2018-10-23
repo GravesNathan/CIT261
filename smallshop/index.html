@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">
 </head>
-<body onload="retreiveCart()">
+<body onload="prepPage()">
     <a href="../index.html">Homepage</a>
     <h1>Small Shop Demo</h1>
     <p id="storageNotice" style="color:blue;"></p>
@@ -83,9 +83,12 @@
     <p>"Import" Cart Test: <br /><b id="importCart"></b></p>
     <p>Total: <b id="total2">0</b></p>
 </div>
-<div class='right' id='support'>
+<div class='right'>
   <p>
-    <button onClick='getSupport()'>Get Support</button>
+    <button id="ajaxButton" type="button">Get Dota 2 Stats</button>
+  </p>
+  <p id='gameStats'>
+    
   </p>
 </div>
 <!--

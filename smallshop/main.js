@@ -22,6 +22,8 @@ var products = new Array(
 var myCart = new Array();
 var cartLength = 0;
 var i;
+var data;
+var jsonString = '';
 
 for(i in products){//Populate table
   document.getElementById("row"+i+"num").innerHTML = products[i].getItemnum();
@@ -154,9 +156,75 @@ function retreiveCart(){
 
 }
 
-//*****************Here we work on adding a "support" "chat"*********
-function getSupport(){
-  document.getElementById('support').innerHTML = ('Hello, my name is computer.  What questions can I answer for you today?'); {
+// Usage example: https://api.opendota.com/api/matches/271145478?api_key=YOUR-API-KEY
+//https://api.opendota.com/api/heroStats
+//**First we'll just get some stats.  Maybe later we'll let users select a hero to check stats.
 
+//Page On load, for Listeners and re-load of cart.
+function prepPage(){
+  document.getElementById('ajaxButton').addEventListener('click', getRequest);
+  retreiveCart();
+}
+
+//process the Request
+/*
+function getRequest(){
+  var xmlhttp = new XMLHttpRequest();//Note capitalization matters in JavaScript
+  if (!xmlhttp){
+    document.getElementById('gameStats').innerHTML = ('Unable to create XMLHTTP instance at this time.');
+    return false;
   }
+  xmlhttp.onreadystatechange = checkXMLHttpRequest(xmlhttp);
+  xmlhttp.open('GET', 'https://api.opendota.com/api/heroStats', true);
+  xmlhttp.send();
+  alert('does this work?');
+}
+
+
+//Wait for request to be completed, then do stuff
+function checkXMLHttpRequest(xmlhttp){
+  if (xmlhttp.readState === 4){//Could also use status 4
+    if (xmlhttp.status === 200) {
+      //do stuff with data
+      alert('data about to be received');
+      var data = JSON.parse(xmlhttp.responseText);
+      alert('data received');
+      displayData(data);
+      //document.getElementById('gameStats').innerHTML = (xmlhttp.responseText);
+      //Under network tab of dev tools in browser I found herostats as json code.
+    } else {
+      //alert('an error occured with the request.')
+      document.getElementById('gameStats').innerHTML = ('An error occured with the request.');
+    }
+  }
+}
+
+function displayData(data){
+  i=0;
+  for (i in data){
+    jsonString += 'test' + data[i].localized_name + ' ' + data[i].primary_attr + ' ' + data[i].roles + '<br />';
+  }
+  document.getElementById('gameStats').innerHTML = jsonString;
+}
+*/
+function getRequest(){
+  var xmlhttp = new XMLHttpRequest();
+  //Script of what to do once the request is complete.  This may seem odd, but it is written
+  //before the request is actually opened or sent.  Only when the request is complete will this
+  //code execute.
+  xmlhttp.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+      data = JSON.parse(xmlhttp.responseText);
+      i=0;
+      for (i in data){
+        jsonString += '<b>Name: </b>' + data[i].localized_name + ' <b>Primary Attribute:</b> ' + data[i].primary_attr + ' <b>Roles:</b> ' + data[i].roles + '<br />';
+      }
+      document.getElementById('gameStats').innerHTML = (jsonString);
+    } else {
+      document.getElementById('gameStats').innerHTML = ('An error occured with the request.');
+    }
+  }//End of "do stuff" function
+  //open and send the reqeust.  Above function executes upon completion.
+  xmlhttp.open('GET', 'https://api.opendota.com/api/heroStats', true);
+  xmlhttp.send();
 }

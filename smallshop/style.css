@@ -3,12 +3,12 @@ table, th, td{
 }
 
 .left{
-  width: 70%;
+  width: 50%;
   float:left;
 }
 
 .right{
   float:right;
-  max-width: 25%;
+  max-width: 48%;
   border: 1px solid black;
 }
