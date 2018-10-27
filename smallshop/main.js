@@ -188,4 +188,4 @@ function getRequest(){
   xmlhttp.send();
 }
 
-//****Note to Self.  Heros have images I can use.**********
+//****Note to Self.  Heros have images I can use.
