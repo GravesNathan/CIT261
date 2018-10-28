@@ -72,6 +72,39 @@
           </td>
         </tr>
       </table>
+      <br /><br />
+      <!--******User to Modify Shop********-->
+      <p>
+        ***Custom shop In Progress, function not complete yet***<br />
+        You can use this form to create your own list of item for sale.
+        You can add, remove, or update an item in the shop.
+      </p>
+      <!--Use Form and then JS DOM to create, remove, insert, and appent to list-->
+      <form id='customize'><!--Action blank to submit to own page-->
+        <label>Item Number:<input type='text' id='formItem' /></label><br />
+        <label>Product Name:<input type='text' id='formProduct' /></label><br />
+        <label>Cost:<input type='text' id='formCost'</label><br />
+        <input type="submit" value="Placeholder">
+      <!--  <select id='formCost'>
+          <option></option>
+          <script>
+          for (var i=0;i<51;i++){
+            document.write ("<option>"+i+"</option>");
+           }
+          </script>
+        </select>
+      -->
+      </form><br />
+
+      <button type="button" id='addItem' onClick='customizeShop(this.id)'>Add Item</button>
+      <button type="button" id='removeItem' onClick='customizeShop(this.id)'>Remove Item</button>
+      <button type="button" id='updateItem' onClick='customizeShop(this.id)'>Update Item</button>
+      <p id='customizeResult'></p>
+
+
+<!--********Shop Buttons and Dota 2 API**********-->
+
+<br /><br />
         <button onclick="clearCart();">Clear Cart</button>
         <button onclick="exportCart();">Export Cart</button>
         <button onclick="importCart();">Import Cart</button>
@@ -88,11 +121,9 @@
     <button id="ajaxButton" type="button">Get Dota 2 Stats</button>
   </p>
   <p id='gameStats'>
-    
+
   </p>
 </div>
-<!--
-  <div id="root"></div>-->
   <script src="main.js" type="text/javascript"></script>
 
 </body>

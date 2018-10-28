@@ -189,3 +189,43 @@ function getRequest(){
 }
 
 //****Note to Self.  Heros have images I can use.
+
+//*****Form to dynamically create users shop*****
+//*****Once it works I should use local storage to store their custom shop*****
+
+function addItem(newProduct,newCost){
+  if( (newProduct == '') || (newCost == '') ){
+    document.getElementById('customizeResult').innerHTML = 'Product name and Price cannot be blank to Add an item to shop.';
+  }
+
+}
+
+function removeItem(newItemNumber){
+  if( (newItemNumber == '') ){
+    document.getElementById('customizeResult').innerHTML = 'Item Number cannot be blank to remove items from the shop.';
+  }
+
+}
+
+function updateItem(newItemNumber,newProduct,newCost){
+  if( (newProduct == '') || (newCost == '') || (newItemNumber == '') ){
+    document.getElementById('customizeResult').innerHTML = 'Item Number, Product name and Price cannot be blank to Update an item in the shop.';
+  }
+
+}
+
+function customizeShop(action){
+  var myForm = document.getElementById('customize');
+  var newItemNumber = myForm.elements[0].value;
+  var newProduct = myForm.elements[1].value;
+  var newCost = parseInt(myForm.elements[2].value);
+  if (action === 'addItem')
+    addItem(newProduct,newCost);
+  else if (action === 'removeItem')
+    removeItem(newItemNumber);
+  else if (action === 'updateItem')
+    updateItem(newItemNumber,newProduct,newCost);
+  else
+    document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
+  //if (Number.isInteger(newCost)){
+}
