@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+&lt<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -45,6 +45,40 @@ programming interface</strong> for HTML. It defines:</p>
   content of an HTML element).</p>
   <p>A <b>method</b> is an action you can do (like add
   or deleting an HTML element).</p>
+
+  <p>
+    Information regarding finding, changing, adding, and deleting HTML elements can be found <a href="https://www.w3schools.com/js/js_htmldom_document.asp">here</a>,
+    with subsequent lesson pages containing detailed examples.  I have included one example based on one from
+    w3schools that demonstrates the use of class with DOM manipulation.  You'll see that there are two
+    instances of the class "intro".  In this case variable x becomes an array with 2 indexes.
+    The text below the script indicate the script's output.
+  </p>
+  <p>
+    *******Example*********
+  <br />  &ltp class="intro"&gtThe DOM is very useful.&lt/p&gt
+  <br />  &ltp class="intro"&gtThis example demonstrates the &ltb&gtgetElementsByClassName&lt/b&gt method.&lt/p&gt
+  <br />
+  <br />  &ltp id="demo"&gt&lt/p&gt
+  <br />
+  <br />  &ltscript&gt
+  <br />  var x = document.getElementsByClassName("intro");
+  <br />  document.getElementById("demo").innerHTML =
+  <br />    'The first paragraph (index 0) with class="intro": ' + x[0].innerHTML +
+  <br />  '&ltbr /&gtThe second paragraph (index 1) with class="intro": ' + x[1].innerHTML;
+  <br />  &lt/script&gt
+  </p>
+  *******Demo Example*********
+  <p class="intro">The DOM is very useful.</p>
+  <p class="intro">This example demonstrates the <b>getElementsByClassName</b> method.</p>
+
+  <p id="demo"></p>
+
+  <script>
+  var x = document.getElementsByClassName("intro");
+  document.getElementById("demo").innerHTML =
+  'The first paragraph (index 0) with class="intro": ' + x[0].innerHTML +
+  '<br />The second paragraph (index 1) with class="intro": ' + x[1].innerHTML;
+  </script>
 
 <!--
   <div id="root"></div>
