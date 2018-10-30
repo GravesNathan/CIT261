@@ -101,13 +101,14 @@
       <button type="button" id='updateItem' onClick='customizeShop(this.id)'>Update Item</button>
       <p id='customizeResult'></p>
 
-
+<!--Note that a button type defaults to submit (at least if a form is
+on the page.)  Avoid this with type="button"-->
 <!--********Shop Buttons and Dota 2 API**********-->
 
 <br /><br />
-        <button onclick="clearCart();">Clear Cart</button>
-        <button onclick="exportCart();">Export Cart</button>
-        <button onclick="importCart();">Import Cart</button>
+        <button type="button" onclick="clearCart();">Clear Cart</button>
+        <button type="button" onclick="exportCart();">Export Cart</button>
+        <button type="button" onclick="importCart();">Import Cart</button>
     </p>
     <p id="viewCart"></p>
     <p>Total: <b id="total">0</b></p>

@@ -218,6 +218,7 @@ function addItem(newProduct,newCost){
 
 }
 
+
 function removeItem(newItemNumber){
   if( (newItemNumber == '') ){
     document.getElementById('customizeResult').innerHTML = 'Item Number cannot be blank to remove items from the shop.';
@@ -229,15 +230,13 @@ function removeItem(newItemNumber){
       newItemNumber += 1;
     }
     numOfProducts -= 1;
-    //products.length = (numOfProducts);
-
+    products.length -= 1;
   }
-
 }
 
-function updateItem(newItemNumber,newProduct,newCost){
-  if( (newProduct == '') || (newCost == '') || (newItemNumber == '') ){
-    document.getElementById('customizeResult').innerHTML = 'Item Number, Product name and Price cannot be blank to Update an item in the shop.';
+function updateItem(newItemNumber,newProduct,newCost){//Need to prohibit updating behond current num products "adding" is okay
+  if( (newProduct == '') || (newCost == '') || (newItemNumber == '') || (newItemNumber > numOfProducts) ){
+    document.getElementById('customizeResult').innerHTML = 'Item Number, Product name and Price cannot be blank to Update an item in the shop.  You also cannot update an item number that does not exist';
   } else {
     products[newItemNumber] =  {"itemNumber":parseInt(newItemNumber),"prodname":newProduct,"cost":newCost};
   }
@@ -245,9 +244,13 @@ function updateItem(newItemNumber,newProduct,newCost){
 
 function customizeShop(action){
   var myForm = document.getElementById('customize');
-  var newItemNumber = myForm.elements[0].value;
+  var newItemNumber = parseInt(myForm.elements[0].value);
   var newProduct = myForm.elements[1].value;
   var newCost = parseInt(myForm.elements[2].value);
+    alert(newItemNumber +', '+newProduct+', '+newCost);
+    //Need to not allow NaN in item number and costs
+    //*************FIX THIS HERE***********
+    //Then use DOM to update page 
   if (action === 'addItem')
     addItem(newProduct,newCost);
   else if (action === 'removeItem')
