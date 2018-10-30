@@ -1,3 +1,4 @@
+/*
 var products = new Array(
   {"itemNumber":0,"prodname":"Sega Genesis","cost":30,
   "getItemnum":function(){return this.itemNumber;},
@@ -13,6 +14,13 @@ var products = new Array(
   "getItemnum":function(){return this.itemNumber;},
   "getProdname":function(){return this.prodname;},
   "getCost":function(){return this.cost;}});
+*/
+
+  var products = new Array(
+    {"itemNumber":0,"prodname":"Sega Genesis","cost":30,},
+    {"itemNumber":1,"prodname":"Super Nintendo","cost":30,},
+    {"itemNumber":2,"prodname":"Game Boy","cost":20,}
+  );
 
 //Later, Add the function to automatically create the table based
 //on the number of products available for sale.
@@ -24,11 +32,13 @@ var cartLength = 0;
 var i;
 var data;
 var jsonString = '';
+var numOfProducts = 0;
 
 for(i in products){//Populate table
-  document.getElementById("row"+i+"num").innerHTML = products[i].getItemnum();
-  document.getElementById("row"+i+"name").innerHTML = products[i].getProdname();
-  document.getElementById("row"+i+"cost").innerHTML = products[i].getCost();
+  document.getElementById("row"+i+"num").innerHTML = products[i].itemNumber;
+  document.getElementById("row"+i+"name").innerHTML = products[i].prodname;
+  document.getElementById("row"+i+"cost").innerHTML = products[i].cost;
+  numOfProducts += 1;
 }
 
 
@@ -83,6 +93,7 @@ function importCart(){
   var total = 0;
   var jsonCart = JSON.stringify(myCart);
   var importCart = JSON.parse(jsonCart);
+  cartLength = 0;
   //No functions are in the imported cart.  Need to reference values directly.
   for (i in importCart){
     tempCart += importCart[i].prodname +" "+  importCart[i].cost+ "<br />";
@@ -93,6 +104,7 @@ function importCart(){
     //Correction, I needed total to be declared as a 0 value to make it a number first.
     //From there javascript automatically interpretted the import as a number for me.  May be safe to use parsing for safety.
     //I wonder whether that's recommended or not?
+    cartLength += 1;
   }
   document.getElementById("importCart").innerHTML = tempCart;
   document.getElementById("total2").innerHTML = total;
@@ -130,6 +142,7 @@ function storeCart(){
   if (storageAvailable('localStorage')) {
     //Convert cart to Json and store.  Retreiving a stored [object, object] was giving me undefined.
     localStorage.setItem('localCart',JSON.stringify(myCart));
+    localStorage.setItem('localCartLength',cartLength);
     document.getElementById('storageNotice').innerHTML =("Cart locally stored.");
   }
   else{
@@ -146,6 +159,7 @@ function retreiveCart(){
     } else {
       //localCart exists, so load it into page.
       myCart = JSON.parse(localStorage.getItem('localCart'));
+      cartLength = parseInt(localStorage.getItem('localCartLength'));
       document.getElementById('storageNotice').innerHTML = ("Cart from previous visit has been loaded.");
       viewCart();
     }
@@ -196,6 +210,10 @@ function getRequest(){
 function addItem(newProduct,newCost){
   if( (newProduct == '') || (newCost == '') ){
     document.getElementById('customizeResult').innerHTML = 'Product name and Price cannot be blank to Add an item to shop.';
+  } else {
+    //numOfProducts is always equal to the next array index in this example
+    products[numOfProducts] =  {"itemNumber":numOfProducts,"prodname":newProduct,"cost":newCost};
+    numOfProducts +=1;
   }
 
 }
@@ -203,6 +221,16 @@ function addItem(newProduct,newCost){
 function removeItem(newItemNumber){
   if( (newItemNumber == '') ){
     document.getElementById('customizeResult').innerHTML = 'Item Number cannot be blank to remove items from the shop.';
+  } else {
+    //take item[i+1] and assign to item[i] until one before the end.  Then remove the end
+    //and decrease item size by 1.  (works for simple example, not in real world practice)
+    while( newItemNumber < (numOfProducts) ) {
+      products[newItemNumber] =  products[newItemNumber+1];
+      newItemNumber += 1;
+    }
+    numOfProducts -= 1;
+    //products.length = (numOfProducts);
+
   }
 
 }
@@ -210,8 +238,9 @@ function removeItem(newItemNumber){
 function updateItem(newItemNumber,newProduct,newCost){
   if( (newProduct == '') || (newCost == '') || (newItemNumber == '') ){
     document.getElementById('customizeResult').innerHTML = 'Item Number, Product name and Price cannot be blank to Update an item in the shop.';
+  } else {
+    products[newItemNumber] =  {"itemNumber":parseInt(newItemNumber),"prodname":newProduct,"cost":newCost};
   }
-
 }
 
 function customizeShop(action){
