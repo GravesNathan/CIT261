@@ -23,7 +23,7 @@
     </p>
 <div class='left'>
       <p>
-      <table>
+      <table id='productsTable'>
         <tr>
           <th>
             Item Number
@@ -81,21 +81,15 @@
       </p>
       <!--Use Form and then JS DOM to create, remove, insert, and appent to list-->
       <form id='customize'><!--Action blank to submit to own page-->
-        <label>Item Number:<input type='text' id='formItem' /></label><br />
+        <label>Item Number:<input type='text' id='formItem' /></label>*<br />
         <label>Product Name:<input type='text' id='formProduct' /></label><br />
-        <label>Cost:<input type='text' id='formCost'</label><br />
+        <label>Cost:<input type='text' id='formCost'</label> *<br />
         <input type="submit" value="Placeholder">
-      <!--  <select id='formCost'>
-          <option></option>
-          <script>
-          for (var i=0;i<51;i++){
-            document.write ("<option>"+i+"</option>");
-           }
-          </script>
-        </select>
-      -->
       </form><br />
-
+      <p>
+        *Non-number characters are removed if the first set of characters are numbers.
+        Only the first set of numbers will be taken as your input.
+      </p>
       <button type="button" id='addItem' onClick='customizeShop(this.id)'>Add Item</button>
       <button type="button" id='removeItem' onClick='customizeShop(this.id)'>Remove Item</button>
       <button type="button" id='updateItem' onClick='customizeShop(this.id)'>Update Item</button>
@@ -126,6 +120,17 @@ on the page.)  Avoid this with type="button"-->
   </p>
 </div>
   <script src="main.js" type="text/javascript"></script>
+
+<!--To DO Items ************
+Make a nice menu with CSS/JS Transitions etc.  Aim for allowing the user
+to customize some aspect of the store to their preference with classes
+or with other JS manipulation.  Have a customize screen, use local storage,
+reflect changes on main screen.  Or rather a menu that pops that in and out of the
+way of the shop.  Make it mobile friendly.
+
+Also allow them to set their own colors for fonts, classes, table, etc.
+I basically want a dynamically cusomizable shop
+Also, keep it simple to get to basic!-->
 
 </body>
 </html>

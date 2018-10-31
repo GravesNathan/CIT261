@@ -208,37 +208,71 @@ function getRequest(){
 //*****Once it works I should use local storage to store their custom shop*****
 
 function addItem(newProduct,newCost){
-  if( (newProduct == '') || (newCost == '') ){
-    document.getElementById('customizeResult').innerHTML = 'Product name and Price cannot be blank to Add an item to shop.';
+  if( (newProduct == '') || (isNaN(newCost)) ){
+    document.getElementById('customizeResult').innerHTML = 'Product name and Price cannot be blank to Add an item to shop.  Cost must also be a valid number';
   } else {
     //numOfProducts is always equal to the next array index in this example
     products[numOfProducts] =  {"itemNumber":numOfProducts,"prodname":newProduct,"cost":newCost};
+    var productsTable = document.getElementById('productsTable');
+    var row = productsTable.insertRow(numOfProducts+1);
+    row.setAttribute('id',numOfProducts);//may need to change to string if not int
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    cell1.innerHTML = numOfProducts;
+    cell2.innerHTML = newProduct;
+    cell3.innerHTML = newCost;
+    cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
     numOfProducts +=1;
+    document.getElementById('customizeResult').innerHTML = 'Your item has been added.';
   }
 
 }
 
 
 function removeItem(newItemNumber){
-  if( (newItemNumber == '') ){
-    document.getElementById('customizeResult').innerHTML = 'Item Number cannot be blank to remove items from the shop.';
+  if( (isNaN(newItemNumber)) || (newItemNumber >= numOfProducts) ){
+    document.getElementById('customizeResult').innerHTML = 'Item Number cannot be blank and must be a valid item number to remove an item.';
   } else {
-    //take item[i+1] and assign to item[i] until one before the end.  Then remove the end
-    //and decrease item size by 1.  (works for simple example, not in real world practice)
+    document.getElementById('productsTable').deleteRow(newItemNumber+1);
+    var row = '';
+    numOfProducts -= 1
     while( newItemNumber < (numOfProducts) ) {
       products[newItemNumber] =  products[newItemNumber+1];
+      //if (newItemNumber )
+      document.getElementById('productsTable').rows[newItemNumber+1].cells[0].innerHTML = newItemNumber;
+
+      //row.deleteCell(0);
+      //cell0 = row.insertCell(0);
+      //cell0.innerHTML = row.
       newItemNumber += 1;
     }
-    numOfProducts -= 1;
+    //numOfProducts -= 1;
     products.length -= 1;
+    document.getElementById('customizeResult').innerHTML = 'The selected item has been removed.';
   }
 }
 
 function updateItem(newItemNumber,newProduct,newCost){//Need to prohibit updating behond current num products "adding" is okay
-  if( (newProduct == '') || (newCost == '') || (newItemNumber == '') || (newItemNumber > numOfProducts) ){
-    document.getElementById('customizeResult').innerHTML = 'Item Number, Product name and Price cannot be blank to Update an item in the shop.  You also cannot update an item number that does not exist';
+  if( (newProduct == '') || (newItemNumber >= numOfProducts) || (isNaN(newCost)) || (isNaN(newItemNumber))){
+    document.getElementById('customizeResult').innerHTML = 'Item Number, Product name and Price cannot be blank to Update an item in the shop.  You can not update items without a valid item number and cost.';
   } else {
     products[newItemNumber] =  {"itemNumber":parseInt(newItemNumber),"prodname":newProduct,"cost":newCost};
+    var productsTable = document.getElementById('productsTable');
+    var row = productsTable.rows[newItemNumber+1];//item number is 1 less then row index
+    //row.setAttribute('id',numOfProducts);//may need to change to string if not int
+    //var cell1 = row.insertCell(0);
+    row.deleteCell(1);//After cell 1 is deleted the new cell one was cell 2.
+    row.deleteCell(1);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    //var cell4 = row.insertCell(3);
+    //cell1.innerHTML = numOfProducts;
+    cell2.innerHTML = newProduct;
+    cell3.innerHTML = newCost;
+    //cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
+    document.getElementById('customizeResult').innerHTML = 'The selected item has been updated.';
   }
 }
 
@@ -247,10 +281,6 @@ function customizeShop(action){
   var newItemNumber = parseInt(myForm.elements[0].value);
   var newProduct = myForm.elements[1].value;
   var newCost = parseInt(myForm.elements[2].value);
-    alert(newItemNumber +', '+newProduct+', '+newCost);
-    //Need to not allow NaN in item number and costs
-    //*************FIX THIS HERE***********
-    //Then use DOM to update page 
   if (action === 'addItem')
     addItem(newProduct,newCost);
   else if (action === 'removeItem')
@@ -259,5 +289,4 @@ function customizeShop(action){
     updateItem(newItemNumber,newProduct,newCost);
   else
     document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
-  //if (Number.isInteger(newCost)){
 }
