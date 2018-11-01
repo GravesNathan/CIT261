@@ -34,15 +34,6 @@ var data;
 var jsonString = '';
 var numOfProducts = 0;
 
-for(i in products){//Populate table
-  document.getElementById("row"+i+"num").innerHTML = products[i].itemNumber;
-  document.getElementById("row"+i+"name").innerHTML = products[i].prodname;
-  document.getElementById("row"+i+"cost").innerHTML = products[i].cost;
-  numOfProducts += 1;
-}
-
-
-
 
 function addToCart(itemNum){//Add items to cart and increase cart length
   myCart[cartLength] = products[itemNum];
@@ -176,7 +167,13 @@ function retreiveCart(){
 
 //Page On load, for Listeners and re-load of cart.
 function prepPage(){
-  document.getElementById('ajaxButton').addEventListener('click', getRequest);
+  for(i in products){//Populate table
+    document.getElementById("row"+i+"num").innerHTML = products[i].itemNumber;
+    document.getElementById("row"+i+"name").innerHTML = products[i].prodname;
+    document.getElementById("row"+i+"cost").innerHTML = products[i].cost;
+      document.getElementById('ajaxButton').addEventListener('click', getRequest);
+    numOfProducts += 1;
+  }
   retreiveCart();
 }
 
@@ -290,3 +287,48 @@ function customizeShop(action){
   else
     document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
 }
+
+
+
+//Taken from w3schools - https://www.w3schools.com/howto/howto_html_include.asp
+//<div w3-include-html="content.html"></div>  have this on webpage and use function listed below.
+
+/* Include multiple snipits in page by referencing multiple snipits separetely.  function remains the same.
+<div w3-include-html="h1.html"></div>
+<div w3-include-html="content.html"></div>
+*/
+
+function includeHTML() {
+  var z, i, elmnt, file, xhttp;
+  /*loop through a collection of all HTML elements:*/
+  z = document.getElementsByTagName("*");
+  for (i = 0; i < z.length; i++) {
+    elmnt = z[i];
+    /*search for elements with a certain atrribute:*/
+    file = elmnt.getAttribute("w3-include-html");
+    if (file) {
+      /*make an HTTP request using the attribute value as the file name:*/
+      xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+          if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+          /*remove the attribute, and call this function once more:*/
+          elmnt.removeAttribute("w3-include-html");
+          includeHTML();
+        }
+      }
+      xhttp.open("GET", file, true);
+      xhttp.send();
+      /*exit the function:*/
+      return;
+    }
+  }
+}
+
+includeHTML();
+/*Lastly call the code in webpage with this at end of webpage which I essentially did above.
+<script>
+includeHTML();
+</script>
+*/
