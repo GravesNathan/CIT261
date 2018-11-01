@@ -273,6 +273,13 @@ function updateItem(newItemNumber,newProduct,newCost){//Need to prohibit updatin
   }
 }
 
+//Allow Customized background color, font color, and table properties.
+//    document.body.style.backgroundColor = "red";
+function updateStyles(bgColor,fontColor,productsBgColor,productsFontColor){
+  //run through each update option.  If something was blank skip it, otherwise update it.
+
+}
+
 function customizeShop(action){
   var myForm = document.getElementById('customize');
   var newItemNumber = parseInt(myForm.elements[0].value);
@@ -289,6 +296,7 @@ function customizeShop(action){
       updateItem(newItemNumber,newProduct,newCost);
       break;
     case 'updateStyles':
+      //updateStyles(bgColor,fontColor,productsBgColor,productsFontColor);
       document.getElementById('customizeResult').innerHTML = 'Action build in progress';
       break;
     default:
@@ -306,11 +314,6 @@ function customizeShop(action){
     document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
 */
 }
-
-//Allow Customized background color, font color, and table properties.
-//    document.body.style.backgroundColor = "red";
-
-
 
 //Taken from w3schools - https://www.w3schools.com/howto/howto_html_include.asp
 //<div w3-include-html="content.html"></div>  have this on webpage and use function listed below.
