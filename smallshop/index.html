@@ -78,6 +78,38 @@
         <label>Item Number:<input type='text' id='formItem' /></label>*<br />
         <label>Product Name:<input type='text' id='formProduct' /></label><br />
         <label>Cost:<input type='text' id='formCost'</label> *<br />
+        <label>Background Color
+          <select name='bgColor'>
+            <option>black</option>
+            <option>blue</option>
+            <option>white</option>
+            <option>grey</option>
+          </select>
+        </label>
+        <label>Font Color
+          <select name='fontColor'>
+            <option>black</option>
+            <option>blue</option>
+            <option>white</option>
+            <option>grey</option>
+          </select>
+        </label>
+        <label>Products Background Color
+          <select name='productsBgColor'>
+            <option>black</option>
+            <option>blue</option>
+            <option>white</option>
+            <option>grey</option>
+          </select>
+        </label>
+        <label>Products Font Color
+          <select name='productsFontColor'>
+            <option>black</option>
+            <option>blue</option>
+            <option>white</option>
+            <option>grey</option>
+          </select>
+        </label>
         <!--<input type="submit" value="Placeholder">-->
       </form><br />
       <p>
@@ -87,7 +119,9 @@
       <button type="button" id='addItem' onClick='customizeShop(this.id)'>Add Item</button>
       <button type="button" id='removeItem' onClick='customizeShop(this.id)'>Remove Item</button>
       <button type="button" id='updateItem' onClick='customizeShop(this.id)'>Update Item</button>
+      <button type="button" id='updateStyles' onClick='customizeShop(this.id)'>Update Page Style</button>
       <p id='customizeResult'></p>
+      <!--Should use id based JS to make this bold and vivid font if bad input-->
 
 <!--Note that a button type defaults to submit (at least if a form is
 on the page.)  Avoid this with type="button"-->
@@ -95,7 +129,7 @@ on the page.)  Avoid this with type="button"-->
 
 <br /><br />
         <p>
-          Some cart functions don't clearly work when the shop is customzed.  This will be adderssed at a later date.
+          Some cart functions don't work properly when the shop is customzed.  This will be adderssed at a later date.
         </p>
         <button type="button" onclick="clearCart();">Clear Cart</button>
         <button type="button" onclick="exportCart();">Export Cart</button>

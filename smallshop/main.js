@@ -278,6 +278,24 @@ function customizeShop(action){
   var newItemNumber = parseInt(myForm.elements[0].value);
   var newProduct = myForm.elements[1].value;
   var newCost = parseInt(myForm.elements[2].value);
+  switch (action) {
+    case 'addItem':
+      addItem(newProduct,newCost);
+      break;
+    case 'removeItem':
+      removeItem(newItemNumber);
+      break;
+    case 'updateItem':
+      updateItem(newItemNumber,newProduct,newCost);
+      break;
+    case 'updateStyles':
+      document.getElementById('customizeResult').innerHTML = 'Action build in progress';
+      break;
+    default:
+      document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
+      break;
+  }
+/*
   if (action === 'addItem')
     addItem(newProduct,newCost);
   else if (action === 'removeItem')
@@ -286,7 +304,11 @@ function customizeShop(action){
     updateItem(newItemNumber,newProduct,newCost);
   else
     document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
+*/
 }
+
+//Allow Customized background color, font color, and table properties.
+//    document.body.style.backgroundColor = "red";
 
 
 
