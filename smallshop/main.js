@@ -277,7 +277,12 @@ function updateItem(newItemNumber,newProduct,newCost){//Need to prohibit updatin
 //    document.body.style.backgroundColor = "red";
 function updateStyles(bgColor,fontColor,productsBgColor,productsFontColor){
   //run through each update option.  If something was blank skip it, otherwise update it.
-
+  //actually I'll just not give them a blank option.  If I implement local storage I may want a reset button.
+//  alert(bgColor +','+fontColor+','+productsBgColor+','+productsFontColor);
+  document.body.style.backgroundColor = bgColor;
+  document.body.style.color = fontColor;
+  document.getElementsByClassName('shopTable')[0].style.backgroundColor = productsBgColor;
+  document.getElementsByClassName('shopTable')[0].style.Color = productsFontColor;
 }
 
 function customizeShop(action){
@@ -285,6 +290,10 @@ function customizeShop(action){
   var newItemNumber = parseInt(myForm.elements[0].value);
   var newProduct = myForm.elements[1].value;
   var newCost = parseInt(myForm.elements[2].value);
+  var bgColor  = myForm.elements[3].value;
+  var fontColor = myForm.elements[4].value;
+  var productsBgColor = myForm.elements[5].value;
+  var productsFontColor = myForm.elements[6].value;
   switch (action) {
     case 'addItem':
       addItem(newProduct,newCost);
@@ -296,8 +305,8 @@ function customizeShop(action){
       updateItem(newItemNumber,newProduct,newCost);
       break;
     case 'updateStyles':
-      //updateStyles(bgColor,fontColor,productsBgColor,productsFontColor);
-      document.getElementById('customizeResult').innerHTML = 'Action build in progress';
+      updateStyles(bgColor,fontColor,productsBgColor,productsFontColor);
+      //document.getElementById('customizeResult').innerHTML = 'Action build in progress';
       break;
     default:
       document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
