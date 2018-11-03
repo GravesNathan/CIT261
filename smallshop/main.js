@@ -10,7 +10,7 @@ var products = new Array(
   "getProdname":function(){return this.prodname;},
   "getCost":function(){return this.cost;}},
 
-  {"itemNumber":2,"prodname":"Game Boy","cost":20,
+  {"itemNumber":2,"prodname":"Game Boy Color","cost":20,
   "getItemnum":function(){return this.itemNumber;},
   "getProdname":function(){return this.prodname;},
   "getCost":function(){return this.cost;}});
@@ -19,7 +19,7 @@ var products = new Array(
   var products = new Array(
     {"itemNumber":0,"prodname":"Sega Genesis","cost":30,},
     {"itemNumber":1,"prodname":"Super Nintendo","cost":30,},
-    {"itemNumber":2,"prodname":"Game Boy","cost":20,}
+    {"itemNumber":2,"prodname":"Game Boy Color","cost":20,}
   );
 
 //Later, Add the function to automatically create the table based
@@ -72,7 +72,7 @@ function viewCart(){
 }
 
 //Interesting, I got a JSON string with brackets on the outside using stringfy...perhaps because I have an array object.
-//It looked like this: [{"itemNumber":2,"prodname":"Game Boy","cost":20}]
+//It looked like this: [{"itemNumber":2,"prodname":"Game Boy Color","cost":20}]
 function exportCart(){
   var jsonCart = JSON.stringify(myCart);
   document.getElementById("jsonCart").innerHTML = jsonCart;
