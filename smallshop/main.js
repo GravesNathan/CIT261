@@ -280,14 +280,14 @@ function updateItem(newItemNumber,newProduct,newCost){//Need to prohibit updatin
 
 //Allow Customized background color, font color, and table properties.
 //    document.body.style.backgroundColor = "red";
-function updateStyles(bgColor,fontColor,productsBgColor,productsFontColor){
+function updateStyles(bgColor,fontColor,productsBgColor){
   //run through each update option.  If something was blank skip it, otherwise update it.
   //actually I'll just not give them a blank option.  If I implement local storage I may want a reset button.
 //  alert(bgColor +','+fontColor+','+productsBgColor+','+productsFontColor);
   document.body.style.backgroundColor = bgColor;
   document.body.style.color = fontColor;
   document.getElementsByClassName('shopTable')[0].style.backgroundColor = productsBgColor;
-  document.getElementsByClassName('shopTable')[0].style.Color = productsFontColor;
+  //document.getElementsByClassName('shopTable')[0].style.Color = productsFontColor;
 }
 
 function customizeShop(action){
@@ -310,7 +310,7 @@ function customizeShop(action){
       updateItem(newItemNumber,newProduct,newCost);
       break;
     case 'updateStyles':
-      updateStyles(bgColor,fontColor,productsBgColor,productsFontColor);
+      updateStyles(bgColor,fontColor,productsBgColor);
       //document.getElementById('customizeResult').innerHTML = 'Action build in progress';
       break;
     default:
