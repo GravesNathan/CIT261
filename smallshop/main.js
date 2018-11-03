@@ -217,10 +217,12 @@ function addItem(newProduct,newCost){
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
     cell1.innerHTML = numOfProducts;
     cell2.innerHTML = newProduct;
     cell3.innerHTML = newCost;
     cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
+    cell5.innerHTML = 'no additional info at this time.';
     numOfProducts +=1;
     document.getElementById('customizeResult').innerHTML = 'Your item has been added.';
   }
@@ -262,13 +264,16 @@ function updateItem(newItemNumber,newProduct,newCost){//Need to prohibit updatin
     //var cell1 = row.insertCell(0);
     row.deleteCell(1);//After cell 1 is deleted the new cell one was cell 2.
     row.deleteCell(1);
+    row.deleteCell(2);//Delete additional info piece
     var cell2 = row.insertCell(1);
     var cell3 = row.insertCell(2);
     //var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
     //cell1.innerHTML = numOfProducts;
     cell2.innerHTML = newProduct;
     cell3.innerHTML = newCost;
     //cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
+    cell5.innerHTML = 'no additional info at this time.';
     document.getElementById('customizeResult').innerHTML = 'The selected item has been updated.';
   }
 }
