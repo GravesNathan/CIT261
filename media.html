@@ -7,13 +7,39 @@
   <!--<link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">-->
 </head>
 <body>
-  <a href="index.html">Homepage</a>
-  <h1>Title</h1>
+  <a href="index.html">HomePage</a>
 
-  <h2>Sub-title</h2>
+  <h1>Sample Canvas</h1>
+  <!--Determines size of the Canvas that can be used-->
+  <canvas id="myCanvas" width="300" height="300" style="border:1px solid #d3d3d3;">
+  Your browser does not support the HTML5 canvas tag.</canvas>
 
-  <h2>Sub-title 2</h2>
+  <script>
 
+  var c = document.getElementById("myCanvas");
+  var ctx = c.getContext("2d");
+
+  //var grd = ctx.createRadialGradient(x0,y0,r0,x1,y1,r1); Determines radial or Liniar gradiant
+  //x0,y0 is starint circle cordinates, r0 is radius of first circle
+  //x1,y1 determine start of last circle? r1 is radius of last circle?
+  var grd = ctx.createRadialGradient(150, 150, 100, 0, 0, 100);
+
+  //Shows how long a color will last until next one begins
+  grd.addColorStop(0, "black");
+  grd.addColorStop("0.3", "magenta");
+  grd.addColorStop("0.5", "blue");
+  grd.addColorStop("0.6", "green");
+  grd.addColorStop("0.8", "yellow");
+  grd.addColorStop(1, "red");
+
+  ctx.fillStyle = grd;
+  //ctx.fillRect(xStart,yStart,xEnd,yEnd);  Determines where to fill the Canvas
+  ctx.fillRect(0, 0, 300, 300);
+
+  </script>
+
+  <p><strong>Note:</strong> The canvas tag is not supported in Internet
+  Explorer 8 and earlier versions.</p>
 
 <!--
   <div id="root"></div>

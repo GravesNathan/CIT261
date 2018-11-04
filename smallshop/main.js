@@ -286,6 +286,7 @@ function updateStyles(bgColor,fontColor,productsBgColor){
 //  alert(bgColor +','+fontColor+','+productsBgColor+','+productsFontColor);
   document.body.style.backgroundColor = bgColor;
   document.body.style.color = fontColor;
+  document.body.style.backgroundImage = 'none';
   document.getElementsByClassName('shopTable')[0].style.backgroundColor = productsBgColor;
   //document.getElementsByClassName('shopTable')[0].style.Color = productsFontColor;
 }
@@ -317,16 +318,6 @@ function customizeShop(action){
       document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
       break;
   }
-/*
-  if (action === 'addItem')
-    addItem(newProduct,newCost);
-  else if (action === 'removeItem')
-    removeItem(newItemNumber);
-  else if (action === 'updateItem')
-    updateItem(newItemNumber,newProduct,newCost);
-  else
-    document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
-*/
 }
 
 //Taken from w3schools - https://www.w3schools.com/howto/howto_html_include.asp
@@ -371,3 +362,20 @@ includeHTML();
 includeHTML();
 </script>
 */
+
+
+//********Canvas JS*********
+var myCanvas = document.getElementById('smallCanvas');
+var ctx=myCanvas.getContext('2d');
+//Create Gradient
+var gradient = ctx.createRadialGradient(50,50,0,50,50,90);
+gradient.addColorStop(0, "white");
+gradient.addColorStop(.3, "yellow");
+gradient.addColorStop(.5, "orange");
+gradient.addColorStop(.6, "green");
+gradient.addColorStop(.8, "blue");
+gradient.addColorStop(.9, "purple");
+gradient.addColorStop(1, 'red');
+//Assign Fill
+ctx.fillStyle = gradient;
+ctx.fillRect(0,0,200,200);
