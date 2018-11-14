@@ -365,6 +365,7 @@ includeHTML();
 
 
 //********Canvas JS*********
+/**
 var myCanvas = document.getElementById('smallCanvas');
 var ctx=myCanvas.getContext('2d');
 //Create Gradient
@@ -379,3 +380,4 @@ gradient.addColorStop(1, 'red');
 //Assign Fill
 ctx.fillStyle = gradient;
 ctx.fillRect(0,0,200,200);
+**/
