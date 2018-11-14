@@ -3,21 +3,238 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Title</title>
+  <title>CSS Transforms</title>
   <!--<link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">-->
 </head>
 <body>
   <a href="index.html">Homepage</a>
-  <h1>Title</h1>
+  <h1>CSS Transformations</h1>
+<p>
 
-  <h2>Sub-title</h2>
+  <a href='https://www.w3schools.com/cssref/css3_pr_transform.asp'>W3 Transforms property</a><br />
+  <a href='https://www.w3schools.com/css/css3_2dtransforms.asp'>W3 2d Transformations</a><br />
+  <a href='https://www.w3schools.com/css/css3_3dtransforms.asp'>W3 3d Transformations</a><br />
+  <a href='https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transforms/Using_CSS_transforms'>MDN Transforms</a><br />
+CSS transforms allow you to translate, rotate, scale, and skew elements.
 
-  <h2>Sub-title 2</h2>
+A transformation is an effect that lets an element change shape, size and position.
+
+CSS supports 2D and 3D transformations. (w3schools)
+</p>
+  <h2>Examples from w3schools</h2>
 
 
-<!--
-  <div id="root"></div>
-  <script src="main.js" type="text/javascript"></script>
--->
+  <h3>The translate() Method</h3>
+  <style>
+#ex1 {
+    width: 300px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+    -ms-transform: translate(50px,100px); /* IE 9 */
+    -webkit-transform: translate(50px,100px); /* Safari */
+    transform: translate(50px,100px); /* Standard syntax */
+}
+</style>
+  <p>The translate() method moves an element from its current position:</p>
+
+  <div id='ex1'>
+  This div element is moved 50 pixels to the right, and 100 pixels down from its current position.
+  </div>
+
+<br /><br /><br /><br /><br /><br />
+  <h3>The rotate() Method</h3>
+  <style>
+  div {
+      width: 300px;
+      height: 100px;
+      background-color: yellow;
+      border: 1px solid black;
+  }
+
+  div#myDiv {/*Negative values are counter clockwise*/
+      -ms-transform: rotate(20deg); /* IE 9 */
+      -webkit-transform: rotate(20deg); /* Safari */
+      transform: rotate(20deg); /* Standard syntax */
+  }
+  </style>
+
+  <p>The rotate() method rotates an element clockwise or counter-clockwise.</p>
+
+  <div>
+  This a normal div element.
+  </div>
+
+  <div id="myDiv">
+  This div element is rotated clockwise 20 degrees.
+  </div>
+
+<br /><br /><br /><br />
+<h3>The scale() Method</h3>
+<p>The scale() method increases or decreases the size of an element.</p>
+
+<div id='ex3'>
+This div element is two times of its original width, and three times of its original height.
+</div>
+
+<style>
+#ex3 {
+    margin: 150px;
+    width: 200px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+    -ms-transform: scale(2,3); /* IE 9 */
+    -webkit-transform: scale(2,3); /* Safari */
+    transform: scale(2,3); /* Standard syntax */
+}
+</style>
+
+<br /><br />
+<h3>The skewX() Method</h3>
+<p>The skewX() method skews an element along the X-axis by the given angle.</p>
+
+<div id=ex4Norm>
+This a normal div element.
+</div>
+
+<div id="skewX">
+This div element is skewed 20 degrees along the X-axis.
+</div>
+
+<style>
+#ex4Norm{
+    width: 300px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+#skewX {
+    -ms-transform: skewX(20deg); /* IE 9 */
+    -webkit-transform: skewX(20deg); /* Safari */
+    transform: skewX(20deg); /* Standard syntax */
+}
+</style>
+
+<br /><br />
+<h3>The skewY() Method</h3>
+<p>The skewY() method skews an element along the Y-axis by the given angle.</p>
+
+<div id=myDiv5>
+This a normal div element.
+</div>
+
+<div id="skewY">
+This div element is skewed 20 degrees along the Y-axis.
+</div>
+
+<style>
+#myDiv5{
+    width: 300px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+div#skewY {
+    -ms-transform: skewY(20deg); /* IE 9 */
+    -webkit-transform: skewY(20deg); /* Safari */
+    transform: skewY(20deg); /* Standard syntax */
+}
+</style>
+
+<br /><br />
+<h1>The skew() Method</h1>
+<p>The skew() method skews an element into a given angle.</p>
+
+<div id='d7'>
+This a normal div element.
+</div>
+
+<div id="d7skew">
+This div element is skewed 20 degrees along the X-axis, and 10 degrees along the Y-axis.
+</div>
+
+<style>
+div#d7 {
+    width: 300px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+div#d7skew {
+    -ms-transform: skew(20deg,10deg); /* IE 9 */
+    -webkit-transform: skew(20deg,10deg); /* Safari */
+    transform: skew(20deg,10deg); /* Standard syntax */
+}
+</style>
+
+<br /><br />
+<h3>The matrix() Method</h3>
+<p>
+  The matrix() method combines all the 2D transform methods into one.
+
+The matrix() method take six parameters, containing mathematic functions, which allows you to rotate, scale, move (translate), and skew elements.
+
+The parameters are as follow: matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())
+</p>
+
+
+<p>The matrix() method combines all the 2D transform methods into one.</p>
+
+<div>
+This a normal div element.
+</div>
+
+<div id="myDiv1">
+Using the matrix() method.
+</div>
+
+<div id="myDiv2">
+Another use of the matrix() method.
+</div>
+
+<style>
+div {
+    width: 300px;
+    height: 100px;
+    background-color: yellow;
+    border: 1px solid black;
+}
+
+div#myDiv1 {
+    -ms-transform: matrix(1, -0.3, 0, 1, 0, 0); /* IE 9 */
+    -webkit-transform: matrix(1, -0.3, 0, 1, 0, 0); /* Safari */
+    transform: matrix(1, -0.3, 0, 1, 0, 0); /* Standard syntax */
+}
+
+div#myDiv2 {
+    -ms-transform: matrix(1, 0, 0.5, 1, 150, 0); /* IE 9 */
+    -webkit-transform: matrix(1, 0, 0.5, 1, 150, 0); /* Safari */
+    transform: matrix(1, 0, 0.5, 1, 150, 0); /* Standard syntax */
+}
+</style>
+
+<h2>3d Transforms</h2>
+<ul>
+  <li>
+    rotateX() : This rotates an element around it's X-axis
+  </li>
+  <li>
+    rotateY() : This rotates an element around it's Y-axis
+  </li>
+  <li>
+    rotateZ() : This rotates an element around it's Z-axis (which is perpendicular to the screen).
+    In other words this works more like a tratitional 2d rotation.
+  </li>
+</ul>
+
+<p>
+  Note that there are also translations, scales, a matrix3d, and perspective 3d transformations.
+
+</p>
+
 </body>
 </html>
