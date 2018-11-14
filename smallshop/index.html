@@ -7,20 +7,9 @@
 
 
   <div w3-include-html="menu.html"></div>
+    <p id="storageNotice" style="color:yellow;"></p>
 
-    <h1>Small Shop Demo</h1>
-    <p id="storageNotice" style="color:blue;"></p>
-    <p>
-      This page utilizes basic JavaScript functions and Objects to simulate a simple game shop.  A users current cart can be stored using
-      local storage api to hold for later.  An empty cart button is built in to clear the contents of the cart.  I also plan to provide a method of saving
-      and retrieving a cart via JSON.<br />
-      <br />
-      I'm working on adding Ajax to either update pricing or to provide a user item description.
-      I could also use it to update the most "popular" purchase (though it's only based on local
-      storage without a database).  A chat box for "support" would be fun.<br />
-      I'll probably include video, images, and audio descriptions later.
-    </p>
-<div class='left'>
+<div id='main'>
       <p>
       <table id='productsTable' class='shopTable'>
         <tr>
@@ -178,8 +167,7 @@ on the page.)  Avoid this with type="button"-->
     <p>Json "Export" Test:<b id="jsonCart"></b></p>
     <p>"Import" Cart Test: <br /><b id="importCart"></b></p>
     <p>Total: <b id="total2">0</b></p>
-</div>
-<div class='right'>
+
   <p>
     <button id="ajaxButton" type="button">Get Dota 2 Stats</button>
   </p>
@@ -201,7 +189,7 @@ I basically want a dynamically cusomizable shop
 Also, keep it simple to get to basic!
 
 Specifics:
---Menu bar hide hide and slide in from left, button on top left
+--Menu bar hide hide and slide in from left, button on top left.  Requires onClick and/or onTouch, CSS transition to slide in and out.
 --onload already in use.  Onclick/onTouch should be used with menu.
 --The little information i would be handy.  Maybe use a transition/transformation/animation (whatever is needed)
 To bring make the information visible in small cloud window (probably with positive z-index).
