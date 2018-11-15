@@ -328,6 +328,13 @@ function customizeShop(action){
 <div w3-include-html="content.html"></div>
 */
 
+/*****************Menu Toggle***************/
+function menuToggle(menu){
+  menu.classList.toggle('open');//Adds open class to CSS of menuToggle
+  var menuBox = document.getElementById('menuBox');
+  menuBox.classList.toggle('open');//Add's open class to menuBox  
+}
+
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
   /*loop through a collection of all HTML elements:*/

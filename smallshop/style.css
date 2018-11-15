@@ -42,20 +42,33 @@ img {
 
 #menuBox{
   width:100px;
-  background-color: white;
+  background-color: black;
   float: left;
   background-image: linear-gradient(to bottom, #000000 0%, #000066 100%);
   background-repeat: no-repeat;
   position: absolute;
-  top:60px;
-  left:15px;
+  top: 40px;
   z-index: 1;
-  //transform:translateX(-115px);/*transition left to edge of page*/
+  height: 100%;
+  transition: transform 1s;
+  -webkit-transition: -webkit-transform 1s
+  transform:translateX(-115px);/*transition left to edge of page*/
+  -ms-transform:translateX(-115px);
+  -webkit-transform:translateX(-115px);
   /*Next I need a button to bring menu back and have it leave*/
   /*Example from Didi uses span for the menu lines, span, then before, then after
-  One line was hid, the others turned into an X
+  One line was hid, the others turned into an X.  In CSS(SCSS) section click to
+  view compiled CSS for more details.
   https://codepen.io/didimillermom/pen/PRwXqo
   */
+}
+
+#menuBox.open{
+  transition: transform 1s;
+  -webkit-transition: -webkit-transform 1s;
+  transform: translateX(115px);
+  -ms-transform: translateX(115px);
+  -webkit-transform: translateX(115px);
 }
 
 #menu{
@@ -68,7 +81,54 @@ img {
 
 #menu table, #menu tr, #menu td{
   border: none;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
+
+#menuToggle{ /*z-index 2 to be in front of menu which is 1*/
+  height: auto;
+  width: auto;
+  position: absolute;
+  top:10;
+  z-index: 2;
+  cursor: pointer;
+}
+
+span{
+  display: block;
+  background-color: white;
+  height: 5px;
+  width: 35px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  content:'';
+}
+
+span::before{
+  display: block;
+  background-color: white;
+  height: 5px;
+  width: 35px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  content:'';
+  transform: translateY(-10px);
+}
+
+span::after{
+  display: block;
+  background-color: white;
+  height: 5px;
+  width: 35px;
+  border-radius: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  content:'';
+    transform: translateY(-5px);
+}
+
 
 body{
   background-color: black;
@@ -82,7 +142,6 @@ body{
 #banner{
   width:100%;
   height:auto;
-  border: solid white;
   min-height: 100px;
   text-align: center;
 }
