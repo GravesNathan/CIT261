@@ -50,8 +50,12 @@ img {
   top:60px;
   left:15px;
   z-index: 1;
-  transform:translateX(-115px);/*transition left to edge of page*/
+  //transform:translateX(-115px);/*transition left to edge of page*/
   /*Next I need a button to bring menu back and have it leave*/
+  /*Example from Didi uses span for the menu lines, span, then before, then after
+  One line was hid, the others turned into an X
+  https://codepen.io/didimillermom/pen/PRwXqo
+  */
 }
 
 #menu{
