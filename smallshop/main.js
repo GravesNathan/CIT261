@@ -329,10 +329,11 @@ function customizeShop(action){
 */
 
 /*****************Menu Toggle***************/
-function menuToggle(menu){
-  menu.classList.toggle('open');//Adds open class to CSS of menuToggle
+function menuToggle(menuToggle){
+  menuToggle.classList.toggle('open');//Adds open class to CSS of menuToggle
   var menuBox = document.getElementById('menuBox');
-  menuBox.classList.toggle('open');//Add's open class to menuBox  
+  menuBox.classList.toggle('open');//Add's open class to menuBox
+
 }
 
 function includeHTML() {

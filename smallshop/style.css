@@ -17,7 +17,8 @@ td{
 #main{
   width: 80%;
   position: relative;
-  float: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 video {
@@ -41,20 +42,21 @@ img {
 */
 
 #menuBox{
-  width:100px;
+  width:20%;
   background-color: black;
   float: left;
   background-image: linear-gradient(to bottom, #000000 0%, #000066 100%);
   background-repeat: no-repeat;
-  position: absolute;
+  position: fixed;
   top: 40px;
+  left: 0px;
   z-index: 1;
   height: 100%;
   transition: transform 1s;
   -webkit-transition: -webkit-transform 1s
-  transform:translateX(-115px);/*transition left to edge of page*/
-  -ms-transform:translateX(-115px);
-  -webkit-transform:translateX(-115px);
+  transform:translateX(-100%);/*transition left to edge of page*/
+  -ms-transform:translateX(-100%);
+  -webkit-transform:translateX(-100%);
   /*Next I need a button to bring menu back and have it leave*/
   /*Example from Didi uses span for the menu lines, span, then before, then after
   One line was hid, the others turned into an X.  In CSS(SCSS) section click to
@@ -66,9 +68,9 @@ img {
 #menuBox.open{
   transition: transform 1s;
   -webkit-transition: -webkit-transform 1s;
-  transform: translateX(115px);
-  -ms-transform: translateX(115px);
-  -webkit-transform: translateX(115px);
+  transform: translateX(0px);
+  -ms-transform: translateX(0px);
+  -webkit-transform: translateX(0px);
 }
 
 #menu{
@@ -88,7 +90,7 @@ img {
 #menuToggle{ /*z-index 2 to be in front of menu which is 1*/
   height: auto;
   width: auto;
-  position: absolute;
+  position: fixed;
   top:10;
   z-index: 2;
   cursor: pointer;
@@ -103,6 +105,8 @@ span{
   margin-top: 10px;
   margin-bottom: 10px;
   content:'';
+  transition: transform .5s;
+  -webkit-transition: -webkit-transform .5s;
 }
 
 span::before{
@@ -114,6 +118,8 @@ span::before{
   margin-top: 10px;
   margin-bottom: 10px;
   content:'';
+  transition: transform .5s;
+  -webkit-transition: -webkit-transform .5s;
   transform: translateY(-10px);
 }
 
@@ -126,7 +132,35 @@ span::after{
   margin-top: 10px;
   margin-bottom: 10px;
   content:'';
-    transform: translateY(-5px);
+  transform: translateY(-5px);
+}
+
+#menuToggle.open span{
+  transition: transform .5s;
+  -webkit-transition: -webkit-transform .5s;
+  transform: rotate(45deg) translate(0,0);
+  -ms-transform: rotate(45deg) translate(0,0);
+  -webkit-transform: rotate(45deg) translate(0,0);
+}
+
+#menuToggle.open span::before{
+  transition: transform .5s;
+  -webkit-transition: -webkit-transform .5s;
+  transform: rotate(90deg) translate(0,0);
+  -ms-transform: rotate(90deg) translate(0,0);
+  -webkit-transform: rotate(90deg) translate(0,0);
+
+}
+/* matrix(scaleX(),skewY(),skewX(),scaleY(),translateX(),translateY())*/
+
+#menuToggle.open span::after{
+  /*
+  transition: transform .5s;
+  -webkit-transition: -webkit-transform .5s;
+*/
+  transform: translate(-200%,0);
+  -ms-transform: translate(-200%,0);
+  -webkit-transform: translate(-200%,0);
 }
 
 
@@ -144,6 +178,11 @@ body{
   height:auto;
   min-height: 100px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  background-color: black;
+  background-image: url(media/images/Stars.jpg);
+  background-size: cover;
 }
 
 p, body, div, table, tr, td, form, a{
