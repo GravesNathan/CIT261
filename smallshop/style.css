@@ -15,7 +15,7 @@ td{
 
 
 #main{
-  width: 80%;
+  width: 90%;
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -25,6 +25,8 @@ video {
   width:100%;
   height:auto;
   max-height: 240px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 img {
@@ -85,6 +87,13 @@ img {
   border: none;
   padding-top: 10px;
   padding-bottom: 10px;
+  text-align: center;
+}
+
+#menu td:hover{
+  transform:scale(1.1,1.1);
+  -ms-transform:scale(1.1,1.1);
+  -webkit-transform:scale(1.1,1.1);
 }
 
 #menuToggle{ /*z-index 2 to be in front of menu which is 1*/
@@ -181,10 +190,33 @@ body{
   position: relative;
   z-index: 1;
   background-color: black;
-  background-image: url(media/images/Stars.jpg);
+  background-image: url('media/images/Stars.jpg');
   background-size: cover;
 }
 
+/*set default text color for almost everything to white*/
 p, body, div, table, tr, td, form, a{
   color: white;
+}
+
+.slideWrapper{
+  overflow: hidden;
+}
+
+.slides{
+  background: url('media/images/sliding-background.jpg') repeat-x;
+  height: 440px;/*desired height*/
+  width: 5076px;/*arbitrary high number, divisible by number of seconds in loop (60 here)*/
+  animation: slidesKey 60s linear infinite;
+}
+/*We can use animation to do anything with transitions, transforms, and all other CSS
+,but allowing us greater control of the timing with keyframes*/
+/*Use animation keyframe to specify the animation for .slides class*/
+@keyframes slidesKey{
+  0%{
+    transform: translate3d(0,0,0);
+  }
+  100%{
+    transform: translate3d(-3720px,0,0);/*I set this to match the image width*/
+  }
 }

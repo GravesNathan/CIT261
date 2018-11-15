@@ -7,9 +7,19 @@
 
 
   <div w3-include-html="menu.html"></div>
-    <p id="storageNotice" style="color:yellow;"></p>
+
 
 <div id='main'>
+    <div class="slideWrapper">
+      <div class="slides"></div>
+    </div>
+    <p>Image sources come from
+      <a href='https://thenextweb.com/gaming/2017/10/11/game-boy-mini-in-the-works/'>thenextweb.com</a>
+      ,<a href='https://fr.wikipedia.org/wiki/Fichier:Atari-2600-Console.jpg'>widipedia.org</a>
+      ,<a href='https://www.denofgeek.com/us/games/video-games/263187/a-guide-to-buying-classic-game-consoles-on-amazon'>denofgeeke.com</a>
+      , and <a href='https://www.pcworld.com/article/3190347/gaming/how-to-build-a-raspberry-pi-retrogaming-emulation-console.html'>pcworld.com</a></p>
+
+      <p id="storageNotice" style="color:yellow;"></p>
       <p>
       <table id='productsTable' class='shopTable'>
         <tr>
@@ -99,9 +109,9 @@
       </p>
       <!--Use Form and then JS DOM to create, remove, insert, and appent to list-->
       <form id='customize'><!--Action blank to submit to own page-->
-        <label>Item Number:<input type='text' id='formItem' /></label>*<br />
+        <label>Item Number:<input type='number' id='formItem' /></label>*<br />
         <label>Product Name:<input type='text' id='formProduct' /></label><br />
-        <label>Cost:<input type='text' id='formCost'</label> *<br />
+        <label>Cost:<input type='number' id='formCost'</label> *<br />
         <label>Background Color
           <select name='bgColor'>
             <option>black</option>
