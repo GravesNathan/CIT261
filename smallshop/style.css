@@ -241,8 +241,23 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 */
 .infoHover{
   /*transform:rotate3d(0,1,0,180deg);*/
+/*  display: block;
+  z-index: 1;
+  position: absolute;
+  background-color: blue;
+  border-radius: 20px;
+  width: 15%;
+  height: auto;
+*/
 }
 
-.infoHover::after{
-
+.infoHover:after{
+  display: block;
+  z-index: 1;
+  position: absolute;
+  background-color: red;
+  border-radius: 20px;
+  width: 15%;
+  height: auto;
+  transform: translate(50px,50px);
 }
