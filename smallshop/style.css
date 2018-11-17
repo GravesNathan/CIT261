@@ -241,5 +241,8 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 */
 .infoHover{
   /*transform:rotate3d(0,1,0,180deg);*/
-  color: black;
+}
+
+.infoHover::after{
+
 }

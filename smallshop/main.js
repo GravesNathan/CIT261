@@ -17,9 +17,9 @@ var products = new Array(
 */
 
   var products = new Array(
-    {"itemNumber":0,"prodname":"Sega Genesis","cost":30,},
-    {"itemNumber":1,"prodname":"Super Nintendo","cost":30,},
-    {"itemNumber":2,"prodname":"Game Boy Color","cost":20,}
+    {"itemNumber":0,"prodname":"Sega Genesis","cost":30,'info':'This is a Sega Genesis.'},
+    {"itemNumber":1,"prodname":"Super Nintendo","cost":30,'info':'This is a Super Nintendo.'},
+    {"itemNumber":2,"prodname":"Game Boy Color","cost":20,'info':'This is a Game Boy Color.'}
   );
 
 //Later, Add the function to automatically create the table based
@@ -204,12 +204,12 @@ function getRequest(){
 //*****Form to dynamically create users shop*****
 //*****Once it works I should use local storage to store their custom shop*****
 
-function addItem(newProduct,newCost){
-  if( (newProduct == '') || (isNaN(newCost)) ){
+function addItem(newProduct,newCost,info){
+  if( (newProduct == '') || (isNaN(newCost)) || (info == '') ){
     document.getElementById('customizeResult').innerHTML = 'Product name and Price cannot be blank to Add an item to shop.  Cost must also be a valid number';
   } else {
     //numOfProducts is always equal to the next array index in this example
-    products[numOfProducts] =  {"itemNumber":numOfProducts,"prodname":newProduct,"cost":newCost};
+    products[numOfProducts] =  {"itemNumber":numOfProducts,"prodname":newProduct,"cost":newCost,"info":info};
     var productsTable = document.getElementById('productsTable');
     var row = productsTable.insertRow(numOfProducts+1);
     row.setAttribute('id',numOfProducts);//may need to change to string if not int
@@ -230,7 +230,10 @@ function addItem(newProduct,newCost){
 
 }
 
-
+//When I removed item 2 but item 3 was avaialble with it's new index, I got an error trying to add to cart.
+//The error indicates that the product name is undefined from view cart.
+//When I remove an item that item needs to be removed from the users cart.
+//The items beyond that number need to be updated with their new numbers too.
 function removeItem(newItemNumber){
   if( (isNaN(newItemNumber)) || (newItemNumber >= numOfProducts) ){
     document.getElementById('customizeResult').innerHTML = 'Item Number cannot be blank and must be a valid item number to remove an item.';
@@ -238,27 +241,49 @@ function removeItem(newItemNumber){
     document.getElementById('productsTable').deleteRow(newItemNumber+1);
     var row = '';
     numOfProducts -= 1
-    while( newItemNumber < (numOfProducts) ) {
-      products[newItemNumber] =  products[newItemNumber+1];
+    i=newItemNumber;
+    while( i < (numOfProducts) ) {
+      products[i] =  products[i+1];
       //if (newItemNumber )
-      document.getElementById('productsTable').rows[newItemNumber+1].cells[0].innerHTML = newItemNumber;
-
-      //row.deleteCell(0);
-      //cell0 = row.insertCell(0);
-      //cell0.innerHTML = row.
-      newItemNumber += 1;
+      document.getElementById('productsTable').rows[i+1].cells[0].innerHTML = i;
+      i++;
     }
-    //numOfProducts -= 1;
     products.length -= 1;
+    /* ********Need to work on removing items from cart eventually.
+    Note when trying to add an item that is after the index of the one that was removed,
+    It throws an error Need to fix
+    var toRemove = 0;
+    for (i in myCart){//if cart length is 5 then indexes are 0-4, so stop at the 5, hence < and not <=
+      if (myCart[i].itemNumber == newItemNumber){
+        console.log('mycart.ItemNumber = ' + myCart[i].itemNumber +' newItemNumber = '+ newItemNumber);
+        var j=i;
+        for (j; j<cartLength; j++){
+          console.log('myCart[j] = ' + myCart[j] +' myCart[j+1] = '+ myCart[j+1]);
+          myCart[j] = myCart[j+1];//brings next items in list down an index
+        }
+        toRemove =+ 1;
+        i--; //Repeat current i index to avoid skipping an item
+      } else if (myCart[i].itemNumber > newItemNumber){
+        myCart[i].itemNumber--; //Correct item number of indexes that were beyond existing one
+        cartLength--;//decrease cart length.
+      }
+      myCart.length -= toRemove; //remove items from end of list
+    }
+    //In reality I'd probably just store item numbers in the cart so the cart requires to update
+    //by pulling all other info from the database.  Previous item numbers could be archived and
+    //listed as not available, but the number can never be used again.
+    viewCart();
+    //also need to store new cart in local storage
+    */
     document.getElementById('customizeResult').innerHTML = 'The selected item has been removed.';
   }
 }
 
-function updateItem(newItemNumber,newProduct,newCost){//Need to prohibit updating behond current num products "adding" is okay
-  if( (newProduct == '') || (newItemNumber >= numOfProducts) || (isNaN(newCost)) || (isNaN(newItemNumber))){
-    document.getElementById('customizeResult').innerHTML = 'Item Number, Product name and Price cannot be blank to Update an item in the shop.  You can not update items without a valid item number and cost.';
+function updateItem(newItemNumber,newProduct,newCost,info){//Need to prohibit updating behond current num products "adding" is okay
+  if( (newProduct == '') || (newItemNumber >= numOfProducts) || (isNaN(newCost)) || (isNaN(newItemNumber)) || (info == '') ){
+    document.getElementById('customizeResult').innerHTML = 'Item Number, Product name, Price, and info cannot be blank to Update an item in the shop.  You can not update items without a valid item number and cost.';
   } else {
-    products[newItemNumber] =  {"itemNumber":parseInt(newItemNumber),"prodname":newProduct,"cost":newCost};
+    products[newItemNumber] =  {"itemNumber":parseInt(newItemNumber),"prodname":newProduct,"cost":newCost, "info":info};
     var productsTable = document.getElementById('productsTable');
     var row = productsTable.rows[newItemNumber+1];//item number is 1 less then row index
     //row.setAttribute('id',numOfProducts);//may need to change to string if not int
@@ -274,7 +299,7 @@ function updateItem(newItemNumber,newProduct,newCost){//Need to prohibit updatin
     cell2.innerHTML = newProduct;
     cell3.innerHTML = newCost;
     //cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
-    cell5.innerHTML = 'no additional info at this time.';
+    cell5.innerHTML = 'no additional media is available.';
     document.getElementById('customizeResult').innerHTML = 'The selected item has been updated.';
   }
 }
@@ -297,19 +322,20 @@ function customizeShop(action){
   var newItemNumber = parseInt(myForm.elements[0].value);
   var newProduct = myForm.elements[1].value;
   var newCost = parseInt(myForm.elements[2].value);
-  var bgColor  = myForm.elements[3].value;
-  var fontColor = myForm.elements[4].value;
-  var productsBgColor = myForm.elements[5].value;
-  var productsFontColor = myForm.elements[6].value;
+  var info = myForm.elements[3].value;
+  var bgColor  = myForm.elements[4].value;
+  var fontColor = myForm.elements[5].value;
+  var productsBgColor = myForm.elements[6].value;
+  var productsFontColor = myForm.elements[7].value;
   switch (action) {
     case 'addItem':
-      addItem(newProduct,newCost);
+      addItem(newProduct,newCost,info);
       break;
     case 'removeItem':
       removeItem(newItemNumber);
       break;
     case 'updateItem':
-      updateItem(newItemNumber,newProduct,newCost);
+      updateItem(newItemNumber,newProduct,newCost,info);
       break;
     case 'updateStyles':
       updateStyles(bgColor,fontColor,productsBgColor);
