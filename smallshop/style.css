@@ -231,3 +231,15 @@ p, body, div, table, tr, td, form, a{
   margin-right: auto;
   width: 20px;
 }
+
+/*Adding i symbol &#9432 as before or after in class itemName
+The HTML code for the i is \0024D8 in CSS (ASCII?)*/
+/*
+.itemName::after{
+  content: 	'<span class="infoIcon">"\0024D8"</span>';
+}
+*/
+.infoHover{
+  /*transform:rotate3d(0,1,0,180deg);*/
+  color: black;
+}

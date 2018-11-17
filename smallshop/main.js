@@ -169,9 +169,9 @@ function retreiveCart(){
 function prepPage(){
   for(i in products){//Populate table
     document.getElementById("row"+i+"num").innerHTML = products[i].itemNumber;
-    document.getElementById("row"+i+"name").innerHTML = products[i].prodname;
+    document.getElementById("row"+i+"name").innerHTML = products[i].prodname + '<span onmouseout="displayInfo(this)" onmouseover="displayInfo(this)">&#9432</span>';
     document.getElementById("row"+i+"cost").innerHTML = products[i].cost;
-      document.getElementById('ajaxButton').addEventListener('click', getRequest);
+    document.getElementById('ajaxButton').addEventListener('click', getRequest);
     numOfProducts += 1;
   }
   retreiveCart();
@@ -218,8 +218,9 @@ function addItem(newProduct,newCost){
     var cell3 = row.insertCell(2);
     var cell4 = row.insertCell(3);
     var cell5 = row.insertCell(4);
+    cell2.classList.add('itemName');
     cell1.innerHTML = numOfProducts;
-    cell2.innerHTML = newProduct;
+    cell2.innerHTML = newProduct + '<span onmouseout="displayInfo(this)" onmouseover="displayInfo(this)">&#9432</span>';
     cell3.innerHTML = newCost;
     cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
     cell5.innerHTML = 'no additional info at this time.';
@@ -335,6 +336,12 @@ function menuToggle(menuToggle){
   menuBox.classList.toggle('open');//Add's open class to menuBox
 
 }
+
+//************Hover Info display******/
+function displayInfo(product){
+  product.classList.toggle('infoHover');
+}
+
 
 function includeHTML() {
   var z, i, elmnt, file, xhttp;
