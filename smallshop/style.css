@@ -252,6 +252,7 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 }
 
 .infoHover:after{
+/*
   display: block;
   z-index: 1;
   position: absolute;
@@ -260,4 +261,5 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
   width: 15%;
   height: auto;
   transform: translate(50px,50px);
+*/
 }
