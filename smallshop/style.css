@@ -5,17 +5,79 @@ table, th, td{
 
 td{
   width:auto;
-  max-width: 320px;
+  /*max-width: 320px;*/
 }
-
-.media {
+.media{
   max-height: 240px;
-  overflow:hidden;
+  overflow: hidden;
+  white-space: nowrap;/*forces images to keep on one line*/
 }
 
 @media only screen and (max-width:600px){
   .hideOnSmall{ display:none;}
 }
+
+td img {
+  width: 50%;
+  height: auto;
+}
+
+
+.imageScrollBtn{
+  margin-left: auto;
+  margin-right: auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  color: black;
+  background-color: white;
+}
+
+#pauseResume{
+  border-radius: 50%;
+  width: auto;
+}
+
+.images{
+  animation: slideImages 10s linear infinite;
+  -webkit-animation: slideImages 10s linear infinite;
+}
+
+@keyframes slideImages{
+  5%{
+    transform: translate3d(0,0,0);
+  }
+  55%{
+    transform: translate3d(-100%,0,0);
+  }
+  65%{
+    transform: translate3d(-100%,0,0);
+  }
+  95%{
+    transform: translate3d(0,0,0);
+  }
+}
+
+@-webkit-keyframes slideImages{
+  5%{
+    transform: translate3d(0,0,0);
+  }
+  55%{
+    transform: translate3d(-100%,0,0);
+  }
+  65%{
+    transform: translate3d(-100%,0,0);
+  }
+  95%{
+    transform: translate3d(0,0,0);
+  }
+}
+
+.paused{
+  animation-play-state: paused;
+  -webkit-animation-play-state: paused;
+}
+/******need to add stuff for buttons still ******/
 
 #main{
   width: 90%;
@@ -31,13 +93,6 @@ video {
   margin-left: auto;
   margin-right: auto;
 }
-
-img {
-  width: 100%;
-  height: auto;
-  margin: 2px;
-}
-
 
 /*
 #smallCanvas{
@@ -213,6 +268,7 @@ p, body, div, table, tr, td, form, a{
   height: 440px;/*desired height*/
   width: 5076px;/*arbitrary high number, divisible by number of seconds in loop (60 here)*/
   animation: slidesKey 60s linear infinite;
+  -webkit-animation: slidesKey 60s linear infinite;
 }
 /*We can use animation to do anything with transitions, transforms, and all other CSS
 ,but allowing us greater control of the timing with keyframes*/
@@ -226,12 +282,14 @@ p, body, div, table, tr, td, form, a{
   }
 }
 
-.imageScroll{
-  margin-left: auto;
-  margin-right: auto;
-  width: 20px;
+@-webkit-keyframes slidesKey{
+  0%{
+    transform: translate3d(0,0,0);
+  }
+  100%{
+    transform: translate3d(-3720px,0,0);/*I set this to match the image width*/
+  }
 }
-
 /*Adding i symbol &#9432 as before or after in class itemName
 The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 /*

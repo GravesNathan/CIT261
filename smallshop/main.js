@@ -363,6 +363,30 @@ function menuToggle(menuToggle){
 
 }
 
+/*********************Images Scroll buttons**************/
+//Consider adding a scroll left and right button at some point
+document.getElementById('btn1').addEventListener('click', scrollImage);
+document.getElementById('btn2').addEventListener('click', scrollImage);
+document.getElementById('btn3').addEventListener('click', scrollImage);
+document.getElementById('pauseResume').addEventListener('click', scrollImage);
+
+function scrollImage(){
+  switch (this.id){
+    case 'pauseResume':
+      document.getElementById('scrollImages').classList.toggle('paused');
+      break;
+    case 'btn1':
+      break;
+    case 'btn2':
+      break;
+    case 'btn3':
+      break;
+    default:
+      break;
+  }
+}
+
+
 //************Hover Info display******/
 //function displayInfo(product){
 //  product.classList.toggle('infoHover');
