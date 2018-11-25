@@ -388,9 +388,9 @@ function scrollImage(){
 
 
 //************Hover Info display******/
-//function displayInfo(product){
-//  product.classList.toggle('infoHover');
-//}
+function displayInfo(product){
+  product.classList.toggle('infoHover');
+}
 
 
 function includeHTML() {
