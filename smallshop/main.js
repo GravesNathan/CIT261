@@ -171,9 +171,11 @@ function prepPage(){
     document.getElementById("row"+i+"num").innerHTML = products[i].itemNumber;
     document.getElementById("row"+i+"name").innerHTML = products[i].prodname + '<span onmouseout="displayInfo(this)" onmouseover="displayInfo(this)">&#9432</span>';
     document.getElementById("row"+i+"cost").innerHTML = products[i].cost;
-    document.getElementById('ajaxButton').addEventListener('click', getRequest);
+    //document.getElementById('ajaxButton').addEventListener('click', getRequest);
     numOfProducts += 1;
   }
+    document.getElementById('ajaxButton').addEventListener('click', getRequest);
+    document.getElementById('apiTest').addEventListener('click', getRequest);
   retreiveCart();
 }
 
@@ -192,6 +194,25 @@ function getRequest(){
       document.getElementById('gameStats').innerHTML = (jsonString);
     } else {
       document.getElementById('gameStats').innerHTML = ('An error occured with the request.');
+    }
+  }//End of "do stuff" function
+  //open and send the reqeust.  Above function executes upon completion.
+  xmlhttp.open('GET', 'https://api.opendota.com/api/heroStats', true);
+  xmlhttp.send();
+}
+
+function getGameInfo(){
+  var xmlhttp = new XMLHttpRequest();
+  xmlhttp.onreadystatechange = function(){
+    if (this.readyState == 4 && this.status == 200) {
+      gameIds = JSON.parse(xmlhttp.responseText);
+      //i=0;
+      //for (i in gameIds){
+      //  jsonString += '<b>Name: </b>' + gameIds[i].localized_name + ' <b>Primary Attribute:</b> ' + gameIds[i].primary_attr + ' <b>Roles:</b> ' + gameIds[i].roles + '<br />';
+      //}
+      //document.getElementById('gameStats').innerHTML = (jsonString);
+    } else {
+      document.getElementById('adsError').innerHTML = ('An error occured with the request.');
     }
   }//End of "do stuff" function
   //open and send the reqeust.  Above function executes upon completion.
@@ -365,9 +386,11 @@ function menuToggle(menuToggle){
 
 /*********************Images Scroll buttons**************/
 //Consider adding a scroll left and right button at some point
+/*
 document.getElementById('btn1').addEventListener('click', scrollImage);
 document.getElementById('btn2').addEventListener('click', scrollImage);
 document.getElementById('btn3').addEventListener('click', scrollImage);
+*/
 document.getElementById('pauseResume').addEventListener('click', scrollImage);
 
 function scrollImage(){
