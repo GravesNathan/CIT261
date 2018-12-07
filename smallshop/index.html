@@ -26,7 +26,77 @@
     </div>
     <p id='adsError'></p>
     -->
-    <div id='shopHome'>
+    <!--******User to Modify Shop********-->
+    <div id='editShopContent'>
+
+    <p>
+      You can use this form to customize the shop to your liking.
+    </p>
+    <p>
+      If you intend to remove an item please check your cart first.  If the item you plan
+      to remove is in the cart please first clear your cart and then remove the item from the shop.
+      Failure to do so will result in an error.
+    </p>
+    <!--Use Form and then JS DOM to create, remove, insert, and appent to list-->
+    <form id='customize'><!--Action blank to submit to own page-->
+      <label>Item Number:<input type='number' id='formItem' /></label>*<br />
+      <label>Product Name:<input type='text' id='formProduct' /></label><br />
+      <label>Cost:<input type='number' id='formCost'</label> *<br />
+      <label>Additional Info:<input type='text' id='formInfo'</label><br />
+      <label>Background Color
+        <select name='bgColor'>
+          <option>black</option>
+          <option>blue</option>
+          <option>white</option>
+          <option>grey</option>
+        </select>
+      </label>
+      <label>Font Color
+        <select name='fontColor'>
+          <option>black</option>
+          <option>blue</option>
+          <option>white</option>
+          <option>grey</option>
+        </select>
+      </label>
+      <label>Products Background Color
+        <select name='productsBgColor'>
+          <option>black</option>
+          <option>blue</option>
+          <option>white</option>
+          <option>grey</option>
+        </select>
+      </label>
+    <!--
+      <label>Products Font Color
+        <select name='productsFontColor'>
+          <option>black</option>
+          <option>blue</option>
+          <option>white</option>
+          <option>grey</option>
+        </select>
+      </label>
+    -->
+      <!--<input type="submit" value="Placeholder">-->
+    </form><br />
+    <p>
+      *Non-number characters are removed if the first set of characters are numbers.
+      Only the first set of numbers will be taken as your input.
+    </p>
+    <button type="button" id='addItem' onClick='customizeShop(this.id)'>Add Item</button>
+    <button type="button" id='removeItem' onClick='customizeShop(this.id)'>Remove Item</button>
+    <button type="button" id='updateItem' onClick='customizeShop(this.id)'>Update Item</button>
+    <button type="button" id='updateStyles' onClick='customizeShop(this.id)'>Update Page Style</button>
+    <p id='customizeResult'></p>
+    <!--Should use id based JS to make this bold and vivid font if bad input-->
+
+    <!--Note that a button type defaults to submit (at least if a form is
+    on the page.)  Avoid this with type="button"-->
+    <button type="button" onclick="clearCart();">Clear Cart</button>
+    </div>
+
+
+    <div id='shopHomeContent'>
       <p id="storageNotice" style="color:yellow;"></p>
       <p>
       <table id='productsTable' class='shopTable'>
@@ -122,79 +192,14 @@
           </td>
         </tr>
       </table>
+      <p id="viewCart"></p>
+      <p id='shopTotal'>Total: <b id="total">0</b></p>
       <button type="button" onclick="clearCart();">Clear Cart</button>
       </div><!--End of shopHome-->
       <br /><br />
 
 
-      <!--******User to Modify Shop********-->
-      <div id='editShopContent'>
 
-      <p>
-        You can use this form to customize the shop to your liking.
-      </p>
-      <p>
-        If you intend to remove an item please check your cart first.  If the item you plan
-        to remove is in the cart please first clear your cart and then remove the item from the shop.
-        Failure to do so will result in an error.
-      </p>
-      <!--Use Form and then JS DOM to create, remove, insert, and appent to list-->
-      <form id='customize'><!--Action blank to submit to own page-->
-        <label>Item Number:<input type='number' id='formItem' /></label>*<br />
-        <label>Product Name:<input type='text' id='formProduct' /></label><br />
-        <label>Cost:<input type='number' id='formCost'</label> *<br />
-        <label>Additional Info:<input type='text' id='formInfo'</label><br />
-        <label>Background Color
-          <select name='bgColor'>
-            <option>black</option>
-            <option>blue</option>
-            <option>white</option>
-            <option>grey</option>
-          </select>
-        </label>
-        <label>Font Color
-          <select name='fontColor'>
-            <option>black</option>
-            <option>blue</option>
-            <option>white</option>
-            <option>grey</option>
-          </select>
-        </label>
-        <label>Products Background Color
-          <select name='productsBgColor'>
-            <option>black</option>
-            <option>blue</option>
-            <option>white</option>
-            <option>grey</option>
-          </select>
-        </label>
-      <!--
-        <label>Products Font Color
-          <select name='productsFontColor'>
-            <option>black</option>
-            <option>blue</option>
-            <option>white</option>
-            <option>grey</option>
-          </select>
-        </label>
-      -->
-        <!--<input type="submit" value="Placeholder">-->
-      </form><br />
-      <p>
-        *Non-number characters are removed if the first set of characters are numbers.
-        Only the first set of numbers will be taken as your input.
-      </p>
-      <button type="button" id='addItem' onClick='customizeShop(this.id)'>Add Item</button>
-      <button type="button" id='removeItem' onClick='customizeShop(this.id)'>Remove Item</button>
-      <button type="button" id='updateItem' onClick='customizeShop(this.id)'>Update Item</button>
-      <button type="button" id='updateStyles' onClick='customizeShop(this.id)'>Update Page Style</button>
-      <p id='customizeResult'></p>
-      <!--Should use id based JS to make this bold and vivid font if bad input-->
-
-<!--Note that a button type defaults to submit (at least if a form is
-on the page.)  Avoid this with type="button"-->
-      <button type="button" onclick="clearCart();">Clear Cart</button>
-      </div>
 
 <br /><br />
         <!--Edited out until a true export/import is used
@@ -202,8 +207,7 @@ on the page.)  Avoid this with type="button"-->
         <button type="button" onclick="importCart();">Import Cart</button>
         -->
     </p>
-    <p id="viewCart"></p>
-    <p>Total: <b id="total">0</b></p>
+
     <!--I'm curious why it doesn't show the Braces on ourside according to the braces format-->
     <!--Commented out until a true export/import is added.
     <p>Json "Export" Test:<b id="jsonCart"></b></p>

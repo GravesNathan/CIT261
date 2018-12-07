@@ -347,3 +347,11 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 }
 
 /*************classes to select which part of page they are on, shop, editor, or character select********/
+/*set display to none for it to go away*/
+.displayNone{
+  display: none;
+}
+
+.displayBlock{
+  display: block;
+}

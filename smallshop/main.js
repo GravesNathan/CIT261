@@ -178,10 +178,10 @@ function prepPage(){
   }
     document.getElementById('ajaxButton').addEventListener('click', getRequest);
     //document.getElementById('apiTest').addEventListener('click', getRequest);
-    document.getElementById('shopHome').addEventListener('click');
-    document.getElementById('editShopContent').addEventListener('click');
-    document.getElementById('selectCharacterContent').addEventListener('click');
   retreiveCart();
+  var menuButton = document.getElementById('menuToggle');
+  menuToggle(menuButton);
+  shopEditorLoad();
 }
 
 function getRequest(){
@@ -458,6 +458,38 @@ includeHTML();
 </script>
 */
 
+
+/**************Work on CSS class changes for different page loads here************/
+function shopHomeLoad(){
+  //show shopHomeContent id, hide editShopContent and selectCharacterContent
+  //Note: Removing a class that does not exist, does NOT throw an error
+  document.getElementById('shopHomeContent').classList.remove('displayNone');
+  document.getElementById('editShopContent').classList.add('displayNone');
+  document.getElementById('selectCharacterContent').classList.add('displayNone');
+  var menuButton = document.getElementById('menuToggle');
+  menuToggle(menuButton);
+  //document.getElementById('shopTotal').classList.remove('displayNone');
+}
+
+function shopEditorLoad(){
+  document.getElementById('editShopContent').classList.remove('displayNone');
+  document.getElementById('shopHomeContent').classList.remove('displayNone');
+  document.getElementById('selectCharacterContent').classList.add('displayNone');
+  var menuButton = document.getElementById('menuToggle');
+  menuToggle(menuButton);
+  //View Shop Home content but hide the total line
+  //document.getElementById('shopTotal').classList.add('displayNone');
+}
+
+function characterSelectLoad(){
+  document.getElementById('selectCharacterContent').classList.remove('displayNone');
+  document.getElementById('shopHomeContent').classList.add('displayNone');
+  document.getElementById('editShopContent').classList.add('displayNone');
+  var menuButton = document.getElementById('menuToggle');
+  menuToggle(menuButton);
+  //document.getElementById('shopTotal').classList.add('displayNone');
+
+}
 
 //********Canvas JS*********
 /**
