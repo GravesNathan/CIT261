@@ -2,6 +2,19 @@ table, th, td{
   border: 1px solid white;
 }
 
+/*So far have usage of transitions and transforms in menu button.
+transition and transform are used in the menu box
+animation is used with slides images
+animation is used with another slider with pause button included
+
+Need one more of each, then to make good use of ajax.
+Transition and transform are easy enough to work in for the different page loads for hidden and not hidden.
+Perhaps I can work the animation into this idea, or into the ajax, by showing only a part of the info at a time
+so a bunch of ajax stuff isn't loaded at once.
+
+If needed I can have a user avitar on top of the page and have it do a fancy spin animation when the user returns
+and displays their user avitar, then it can say welcome back.
+*/
 
 td{
   width:auto;
@@ -328,3 +341,9 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
   border-color: transparent;
   color: white;
 }
+
+.underline:hover{
+  cursor: pointer;
+}
+
+/*************classes to select which part of page they are on, shop, editor, or character select********/
