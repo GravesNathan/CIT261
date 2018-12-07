@@ -350,8 +350,28 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 /*set display to none for it to go away*/
 .displayNone{
   display: none;
+  animation: contentUpdate 5s linear alternate;
+  -webkit-animation: contentUpdate 5s linear alternate;
+
 }
 
-.displayBlock{
-  display: block;
+transition: transform 1s;
+-webkit-transition: -webkit-transform 1s
+
+@keyframes contentUpdate{
+  0%{
+    transform: scale(1)
+  }
+  100%{
+    transform: scale(.1);
+  }
+}
+
+@-webkit-keyframes contentUpdate{
+  0%{
+    transform: scale(1)
+  }
+  100%{
+    transform: scale(.1);
+  }
 }
