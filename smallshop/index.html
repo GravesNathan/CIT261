@@ -19,12 +19,14 @@
       ,<a href='https://www.denofgeek.com/us/games/video-games/263187/a-guide-to-buying-classic-game-consoles-on-amazon'>denofgeeke.com</a>
       , and <a href='https://www.pcworld.com/article/3190347/gaming/how-to-build-a-raspberry-pi-retrogaming-emulation-console.html'>pcworld.com</a>
     </p>
-    <div class='advertiseWrapper'>
+    <!--<div class='advertiseWrapper'>
       <div class='ads'>
         <button id='apiTest'>API Test</button>
       </div>
     </div>
     <p id='adsError'></p>
+    -->
+    <div id='shopHome'>
       <p id="storageNotice" style="color:yellow;"></p>
       <p>
       <table id='productsTable' class='shopTable'>
@@ -120,10 +122,21 @@
           </td>
         </tr>
       </table>
+      <button type="button" onclick="clearCart();">Clear Cart</button>
+      </div><!--End of shopHome-->
       <br /><br />
+
+
       <!--******User to Modify Shop********-->
+      <div id='editShopContent'>
+
       <p>
         You can use this form to customize the shop to your liking.
+      </p>
+      <p>
+        If you intend to remove an item please check your cart first.  If the item you plan
+        to remove is in the cart please first clear your cart and then remove the item from the shop.
+        Failure to do so will result in an error.
       </p>
       <!--Use Form and then JS DOM to create, remove, insert, and appent to list-->
       <form id='customize'><!--Action blank to submit to own page-->
@@ -180,30 +193,37 @@
 
 <!--Note that a button type defaults to submit (at least if a form is
 on the page.)  Avoid this with type="button"-->
-<!--********Shop Buttons and Dota 2 API**********-->
+      <button type="button" onclick="clearCart();">Clear Cart</button>
+      </div>
 
 <br /><br />
-        <p>
-          Some cart functions don't work properly when the shop is customzed.  This will be adderssed at a later date.
-        </p>
-        <button type="button" onclick="clearCart();">Clear Cart</button>
+        <!--Edited out until a true export/import is used
         <button type="button" onclick="exportCart();">Export Cart</button>
         <button type="button" onclick="importCart();">Import Cart</button>
+        -->
     </p>
     <p id="viewCart"></p>
     <p>Total: <b id="total">0</b></p>
     <!--I'm curious why it doesn't show the Braces on ourside according to the braces format-->
+    <!--Commented out until a true export/import is added.
     <p>Json "Export" Test:<b id="jsonCart"></b></p>
     <p>"Import" Cart Test: <br /><b id="importCart"></b></p>
     <p>Total: <b id="total2">0</b></p>
+    -->
 
+
+    <!--*********Character Select Page************-->
+  <div id='selectCharacterContent'>
   <p>
     <button id="ajaxButton" type="button">Get Dota 2 Stats</button>
   </p>
   <p id='gameStats'>
 
   </p>
-</div>
+  </div>
+
+
+</div><!--End of main-->
   <script src="main.js" type="text/javascript"></script>
 
 <!--To DO Items ************

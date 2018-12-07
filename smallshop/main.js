@@ -73,6 +73,7 @@ function viewCart(){
 
 //Interesting, I got a JSON string with brackets on the outside using stringfy...perhaps because I have an array object.
 //It looked like this: [{"itemNumber":2,"prodname":"Game Boy Color","cost":20}]
+/*
 function exportCart(){
   var jsonCart = JSON.stringify(myCart);
   document.getElementById("jsonCart").innerHTML = jsonCart;
@@ -102,6 +103,7 @@ function importCart(){
   //upload file (eventually)
   //Also update API with new cart
 }
+*/
 
 //********Test for Storage Compatibility**********
 function storageAvailable(type) {
@@ -175,7 +177,10 @@ function prepPage(){
     numOfProducts += 1;
   }
     document.getElementById('ajaxButton').addEventListener('click', getRequest);
-    document.getElementById('apiTest').addEventListener('click', getRequest);
+    //document.getElementById('apiTest').addEventListener('click', getRequest);
+    document.getElementById('shopHome').addEventListener('click');
+    document.getElementById('editShopContent').addEventListener('click');
+    document.getElementById('selectCharacterContent').addEventListener('click');
   retreiveCart();
 }
 
@@ -201,6 +206,7 @@ function getRequest(){
   xmlhttp.send();
 }
 
+/*
 function getGameInfo(){
   var xmlhttp = new XMLHttpRequest();
   xmlhttp.onreadystatechange = function(){
@@ -219,6 +225,7 @@ function getGameInfo(){
   xmlhttp.open('GET', 'https://api.opendota.com/api/heroStats', true);
   xmlhttp.send();
 }
+*/
 
 //****Note to Self.  Heros have images I can use.
 

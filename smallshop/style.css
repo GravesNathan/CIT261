@@ -321,3 +321,10 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
   transform: translate(50px,50px);
 */
 }
+
+.underline{
+  text-decoration: underline;
+  background-color: transparent;
+  border-color: transparent;
+  color: white;
+}
