@@ -170,6 +170,7 @@ function retreiveCart(){
 //Page On load, for Listeners and re-load of cart.
 function prepPage(){
   for(i in products){//Populate table
+    loadingStarts();
     document.getElementById("row"+i+"num").innerHTML = products[i].itemNumber;
     document.getElementById("row"+i+"name").innerHTML = products[i].prodname + '<span onmouseout="displayInfo(this)" onmouseover="displayInfo(this)">&#9432</span>';
     document.getElementById("row"+i+"cost").innerHTML = products[i].cost;
@@ -183,6 +184,21 @@ function prepPage(){
   menuToggle(menuButton);
   shopEditorLoad();
 }
+
+/*Setup Timer for the loading function.  The onclicks will need to trigger a function to
+add the loading class, then have a timer function called that removes it about 2 seconds later.
+Initial loading of webpage will need that same timer function called in prepPage to remove the class
+*/
+function loadingStarts(){
+  document.getElementById('loading').classList.remove('displayNone');
+  var timer = setInterval(stopLoading, 2000);
+}
+
+function stopLoading(){
+  document.getElementById('loading').classList.add('displayNone');
+}
+
+
 
 function getRequest(){
   var xmlhttp = new XMLHttpRequest();
@@ -463,6 +479,7 @@ includeHTML();
 function shopHomeLoad(){
   //show shopHomeContent id, hide editShopContent and selectCharacterContent
   //Note: Removing a class that does not exist, does NOT throw an error
+  loadingStarts();
   document.getElementById('shopHomeContent').classList.remove('displayNone');
   document.getElementById('editShopContent').classList.add('displayNone');
   document.getElementById('selectCharacterContent').classList.add('displayNone');
@@ -472,6 +489,7 @@ function shopHomeLoad(){
 }
 
 function shopEditorLoad(){
+  loadingStarts();
   document.getElementById('editShopContent').classList.remove('displayNone');
   document.getElementById('shopHomeContent').classList.remove('displayNone');
   document.getElementById('selectCharacterContent').classList.add('displayNone');
@@ -482,13 +500,13 @@ function shopEditorLoad(){
 }
 
 function characterSelectLoad(){
+  loadingStarts();
   document.getElementById('selectCharacterContent').classList.remove('displayNone');
   document.getElementById('shopHomeContent').classList.add('displayNone');
   document.getElementById('editShopContent').classList.add('displayNone');
   var menuButton = document.getElementById('menuToggle');
   menuToggle(menuButton);
   //document.getElementById('shopTotal').classList.add('displayNone');
-
 }
 
 //********Canvas JS*********

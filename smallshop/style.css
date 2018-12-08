@@ -127,8 +127,8 @@ video {
   left: 0px;
   z-index: 1;
   height: 100%;
-  transition: transform 1s;
-  -webkit-transition: -webkit-transform 1s
+  transition: transform .5s;
+  -webkit-transition: -webkit-transform .5s
   transform:translateX(-100%);/*transition left to edge of page*/
   -ms-transform:translateX(-100%);
   -webkit-transform:translateX(-100%);
@@ -141,8 +141,8 @@ video {
 }
 
 #menuBox.open{
-  transition: transform 1s;
-  -webkit-transition: -webkit-transform 1s;
+  transition: transform .5s;
+  -webkit-transition: -webkit-transform .5s;
   transform: translateX(0px);
   -ms-transform: translateX(0px);
   -webkit-transform: translateX(0px);
@@ -255,6 +255,51 @@ body{
   background-size: cover;
 }
 
+.loading{
+  background-color: black;
+  z-index: 5;
+  background-position: left top;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  opacity: .99;
+}
+
+
+.loadingCircle{
+  background-color: black;
+  z-index: 6;
+  position: relative;
+  width:5%;
+  height:auto;
+  top: 45%;
+  left: 45%;
+  animation: loadingCircle 2s linear;
+  -webkit-animation: loadingCircle 2s linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+}
+
+@keyframes loadingCircle{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+@-webkit-keyframes loading{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
+}
+
+
 #banner{
   width:100%;
   height:auto;
@@ -350,28 +395,4 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 /*set display to none for it to go away*/
 .displayNone{
   display: none;
-  animation: contentUpdate 5s linear alternate;
-  -webkit-animation: contentUpdate 5s linear alternate;
-
-}
-
-transition: transform 1s;
--webkit-transition: -webkit-transform 1s
-
-@keyframes contentUpdate{
-  0%{
-    transform: scale(1)
-  }
-  100%{
-    transform: scale(.1);
-  }
-}
-
-@-webkit-keyframes contentUpdate{
-  0%{
-    transform: scale(1)
-  }
-  100%{
-    transform: scale(.1);
-  }
 }
