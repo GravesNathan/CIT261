@@ -510,7 +510,7 @@ function characterSelectLoad(){
 }
 
 /*********Make Shop Editor Pretty, and use Transitions YAY*********/
-function NextView(choiceId){
+function NextView(){
   //switch that chooses which class to add to the form options,
   //Bring the correct options and button into view by removing the off view,
   // (or hidden) class.
