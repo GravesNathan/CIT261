@@ -396,3 +396,33 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 .displayNone{
   display: none;
 }
+
+.formWrapper{
+  overflow: hidden;
+}
+
+.offScreen{
+  position: relative;
+  display: block;
+  visibility: hidden;
+  transition: transform 1s;
+  -webkit-transition: -webkit-transform 1s;
+  transform: translateX(110%);
+  -ms-transform: translateX(110%);
+  -webkit-transform: translateX(110%);
+}
+
+.onScreen{
+    position: relative;
+    display: block;
+    visibility: visible;
+    transition: transform 1s;
+    -webkit-transition: -webkit-transform 1s;
+    transform: translateX(0px);
+    -ms-transform: translateX(0px);
+    -webkit-transform: translateX(0px);
+}
+
+input, select{
+  margin-top: 1em;
+}

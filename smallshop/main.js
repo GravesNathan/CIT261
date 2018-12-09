@@ -509,6 +509,108 @@ function characterSelectLoad(){
   //document.getElementById('shopTotal').classList.add('displayNone');
 }
 
+/*********Make Shop Editor Pretty, and use Transitions YAY*********/
+function NextView(choiceId){
+  //switch that chooses which class to add to the form options,
+  //Bring the correct options and button into view by removing the off view,
+  // (or hidden) class.
+  choice = document.getElementById('choiceId').value;
+  var itemNumberLabel = document.getElementById('itemNumberLabel');
+  var productNameLabel = document.getElementById('productNameLabel');
+  var costLabel = document.getElementById('costLabel');
+  var infoLabel = document.getElementById('infoLabel');
+  var bgColorLabel = document.getElementById('bgColorLabel');
+  var fontColorLabel = document.getElementById('fontColorLabel');
+  var shopBgColorLabel = document.getElementById('shopBgColorLabel');
+  var addItem = document.getElementById('addItem');
+  var removeItem = document.getElementById('removeItem');
+  var updateItem = document.getElementById('updateItem');
+  var updateStyles = document.getElementById('updateStyles');
+  var updateStyles = document.getElementById('astrix');
+  switch (choice) {
+    case 'Add an Item':
+      itemNumberLabel.classList.remove('onScreen');
+      //Need to add the offScreen which skips transition because of display none to block change
+      //Then add onScreen.  When removing I need to remove both offScreen and onScreen
+      //Well, that didn't work....maybe last idea here: https://www.impressivewebs.com/animate-display-block-none/
+      productNameLabel.classList.add('onScreen');
+      costLabel.classList.add('onScreen');
+      infoLabel.classList.add('onScreen');
+      bgColorLabel.classList.remove('onScreen');
+      fontColorLabel.classList.remove('onScreen');
+      shopBgColorLabel.classList.remove('onScreen');
+      addItem.classList.add('onScreen');
+      removeItem.classList.remove('onScreen');
+      updateItem.classList.remove('onScreen');
+      updateStyles.classList.remove('onScreen');
+      astrix.classList.add('onScreen');
+      break;
+    case 'Remove an Item':
+      itemNumberLabel.classList.add('onScreen');
+      productNameLabel.classList.remove('onScreen');
+      costLabel.classList.remove('onScreen');
+      infoLabel.classList.remove('onScreen');
+      bgColorLabel.classList.remove('onScreen');
+      fontColorLabel.classList.remove('onScreen');
+      shopBgColorLabel.classList.remove('onScreen');
+      addItem.classList.remove('onScreen');
+      removeItem.classList.add('onScreen');
+      updateItem.classList.remove('onScreen');
+      updateStyles.classList.remove('onScreen');
+      astrix.classList.add('onScreen');
+      break;
+    case 'Update an Item':
+      itemNumberLabel.classList.add('onScreen');
+      productNameLabel.classList.add('onScreen');
+      costLabel.classList.add('onScreen');
+      infoLabel.classList.add('onScreen');
+      bgColorLabel.classList.remove('onScreen');
+      fontColorLabel.classList.remove('onScreen');
+      shopBgColorLabel.classList.remove('onScreen');
+      addItem.classList.remove('onScreen');
+      removeItem.classList.remove('onScreen');
+      updateItem.classList.add('onScreen');
+      updateStyles.classList.remove('onScreen');
+      astrix.classList.add('onScreen');
+      break;
+    case 'Update Shop Styles':
+      itemNumberLabel.classList.remove('onScreen');
+      productNameLabel.classList.remove('onScreen');
+      costLabel.classList.remove('onScreen');
+      infoLabel.classList.remove('onScreen');
+      bgColorLabel.classList.add('onScreen');
+      fontColorLabel.classList.add('onScreen');
+      shopBgColorLabel.classList.add('onScreen');
+      addItem.classList.remove('onScreen');
+      removeItem.classList.remove('onScreen');
+      updateItem.classList.remove('onScreen');
+      updateStyles.classList.add('onScreen');//Why is this line not working!?
+      //Works fine when visibility is not changed...but stays invisible.
+      //Check browsers and history clear maybe.
+      astrix.classList.remove('onScreen');
+      break;
+    case '':
+      itemNumberLabel.classList.remove('onScreen');
+      productNameLabel.classList.remove('onScreen');
+      costLabel.classList.remove('onScreen');
+      infoLabel.classList.remove('onScreen');
+      bgColorLabel.classList.remove('onScreen');
+      fontColorLabel.classList.remove('onScreen');
+      shopBgColorLabel.classList.remove('onScreen');
+      addItem.classList.remove('onScreen');
+      removeItem.classList.remove('onScreen');
+      updateItem.classList.remove('onScreen');
+      updateStyles.classList.remove('onScreen');
+      astrix.classList.remove('onScreen');
+      break;
+    default:
+      document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
+      break;
+    }
+}
+
+
+
 //********Canvas JS*********
 /**
 var myCanvas = document.getElementById('smallCanvas');

@@ -31,45 +31,80 @@
     -->
     <!--******User to Modify Shop********-->
     <div id='editShopContent'>
-
+      <h1>Shop Editor</h1>
     <p>
-      You can use this form to customize the shop to your liking.
+      This site is designed to allow you to create a very simple shop for demonstration purposes only.
+      We start you off with a few default items in the table below.  You can use the forms below
+      to make modifications to the shop content or the page itself.  When you are satisfied use the
+      menu icon to select "Shop Home" in order to view what the end customer would see.
     </p>
     <p>
-      If you intend to remove an item please check your cart first.  If the item you plan
-      to remove is in the cart please first clear your cart and then remove the item from the shop.
-      Failure to do so will result in an error.
+      Note: If you intend to remove an item please check your cart first.  If the item you plan
+      to remove is in the cart, please first clear your cart and then remove the item from the shop.
+      Failure to do so will result in an error.  This will be corrected at a later date.
     </p>
     <!--Use Form and then JS DOM to create, remove, insert, and appent to list-->
+    <div class ='formWrapper'>
     <form id='customize'><!--Action blank to submit to own page-->
-      <label>Item Number:<input type='number' id='formItem' /></label>*<br />
-      <label>Product Name:<input type='text' id='formProduct' /></label><br />
-      <label>Cost:<input type='number' id='formCost'</label> *<br />
-      <label>Additional Info:<input type='text' id='formInfo'</label><br />
-      <label>Background Color
+      <label>What do you want to do?</label>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <select name='choice' id='choiceId' onchange='NextView(this.id)'>
+          <option></option>
+          <option>Add an Item</option>
+          <option>Remove an Item</option>
+          <option>Update an Item</option>
+          <option>Update Shop Styles</option>
+        </select>
+        <br />
+      <label id='itemNumberLabel' class='offScreen'>Item Number:&nbsp&nbsp&nbsp;&nbsp&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type='number' id='formItem' /> *<br /></label>
+
+      <label id='productNameLabel' class='offScreen'>Product Name:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type='text' id='formProduct' /><br /></label>
+
+      <label id='costLabel' class='offScreen'>Cost:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type='number' id='formCost' /> *<br /></label>
+
+      <label id='infoLabel' class='offScreen'>Additional Info:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        <input type='text' id='formInfo' /><br /></label>
+
+
+      <div id='astrix' class='offScreen'>
+        <br />
+        *Non-number characters are removed if the first set of characters are numbers.
+        Only the first set of numbers will be taken as your input.<br />
+      </div>
+
+      <label id='bgColorLabel' class='offScreen'>Background Color
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <select name='bgColor'>
           <option>black</option>
           <option>blue</option>
           <option>white</option>
           <option>grey</option>
         </select>
-      </label>
-      <label>Font Color
+      <br /></label>
+
+      <label id='fontColorLabel' class='offScreen'>Font Color
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
         <select name='fontColor'>
           <option>black</option>
           <option>blue</option>
           <option>white</option>
           <option>grey</option>
         </select>
-      </label>
-      <label>Products Background Color
-        <select name='productsBgColor'>
+      <br /></label>
+
+      <label id='shopBgColorLabel' class='offScreen'>Products Background Color
+        &nbsp&nbsp<select name='productsBgColor'>
           <option>black</option>
           <option>blue</option>
           <option>white</option>
           <option>grey</option>
         </select>
-      </label>
+      <br /></label>
+
     <!--
       <label>Products Font Color
         <select name='productsFontColor'>
@@ -81,21 +116,22 @@
       </label>
     -->
       <!--<input type="submit" value="Placeholder">-->
-    </form><br />
-    <p>
-      *Non-number characters are removed if the first set of characters are numbers.
-      Only the first set of numbers will be taken as your input.
-    </p>
-    <button type="button" id='addItem' onClick='customizeShop(this.id)'>Add Item</button>
-    <button type="button" id='removeItem' onClick='customizeShop(this.id)'>Remove Item</button>
-    <button type="button" id='updateItem' onClick='customizeShop(this.id)'>Update Item</button>
-    <button type="button" id='updateStyles' onClick='customizeShop(this.id)'>Update Page Style</button>
+    </form>
+
+    <br />
+
+    <button type="button" id='addItem' onClick='customizeShop(this.id)' class='offScreen'>Add Item</button>
+    <button type="button" id='removeItem' onClick='customizeShop(this.id)' class='offScreen'>Remove Item</button>
+    <button type="button" id='updateItem' onClick='customizeShop(this.id)' class='offScreen'>Update Item</button>
+    <button type="button" id='updateStyles' onClick='customizeShop(this.id)' class='offScreen'>Update Page Style</button>
+
+    </div>
     <p id='customizeResult'></p>
     <!--Should use id based JS to make this bold and vivid font if bad input-->
 
     <!--Note that a button type defaults to submit (at least if a form is
     on the page.)  Avoid this with type="button"-->
-    <button type="button" onclick="clearCart();">Clear Cart</button>
+
     </div>
 
 
