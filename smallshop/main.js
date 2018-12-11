@@ -17,9 +17,9 @@ var products = new Array(
 */
 
   var products = new Array(
-    {"itemNumber":0,"prodname":"Sega Genesis","cost":30,'info':'This is a Sega Genesis.'},
-    {"itemNumber":1,"prodname":"Super Nintendo","cost":30,'info':'This is a Super Nintendo.'},
-    {"itemNumber":2,"prodname":"Game Boy Color","cost":20,'info':'This is a Game Boy Color.'}
+    {"itemNumber":0,"prodname":"Sega Genesis","cost":30,'info':"<div class='media'><video controls><source src='media/videos/sega.mp4' type='video/mp4' /><source src='media/videos/sega.ogv' type='video/ogg' /><source src='media/videos/sega.webm' type='video/webm' /><p>Your browser does not support HTML5.  You can download the video <a href='media/videos/sega.mp4'>here</a>.</p></video></div>"},
+    {"itemNumber":1,"prodname":"Super Nintendo","cost":30,'info':"<div class='media'><div class = 'images' id='scrollImages'><img src='media/images/sNintendo1.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo2.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo3.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo4.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo5.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo6.JPG' alt='Super Nintendo Picts' /></div></div><div class='centerAll'><button class='imageScrollBtn' id='pauseResume' onclick='scrollImage(this.id)'>Pause/Resume</button></div>"},
+    {"itemNumber":2,"prodname":"Game Boy Color","cost":20,'info':"<div class='media'><audio controls><source src='media/audio/GameBoyColor.m4a' type='audio/m4a' /><source src='media/audio/GameBoyColor.mp3' type='audio/mpeg' /><source src='media/audio/GameBoyColor.ogg' type='audio/ogg' /><source src='media/audio/GameBoyColor.wav' type='audio/wav' /><p>The audio content is not supported or has been blocked.  You can download a file <a href='media/audio/gameBoyColor'>here</a>.</p></audio></div>"}
   );
 
 
@@ -28,9 +28,9 @@ var products = new Array(
 //If possible have it dynamically create the labels to use with
 //the getElementById functions.
 var originalProducts = new Array(
-  {"itemNumber":0,"prodname":"Sega Genesis","cost":30,'info':'This is a Sega Genesis.'},
-  {"itemNumber":1,"prodname":"Super Nintendo","cost":30,'info':'This is a Super Nintendo.'},
-  {"itemNumber":2,"prodname":"Game Boy Color","cost":20,'info':'This is a Game Boy Color.'}
+  {"itemNumber":0,"prodname":"Sega Genesis","cost":30,'info':"<div class='media'><video controls><source src='media/videos/sega.mp4' type='video/mp4' /><source src='media/videos/sega.ogv' type='video/ogg' /><source src='media/videos/sega.webm' type='video/webm' /><p>Your browser does not support HTML5.  You can download the video <a href='media/videos/sega.mp4'>here</a>.</p></video></div>"},
+  {"itemNumber":1,"prodname":"Super Nintendo","cost":30,'info':"<div class='media'><div class = 'images' id='scrollImages'><img src='media/images/sNintendo1.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo2.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo3.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo4.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo5.JPG' alt='Super Nintendo Picts' /><img src='media/images/sNintendo6.JPG' alt='Super Nintendo Picts' /></div></div><div class='centerAll'><button class='imageScrollBtn' id='pauseResume' onclick='scrollImage(this.id)'>Pause/Resume</button></div>"},
+  {"itemNumber":2,"prodname":"Game Boy Color","cost":20,'info':"<div class='media'><audio controls><source src='media/audio/GameBoyColor.m4a' type='audio/m4a' /><source src='media/audio/GameBoyColor.mp3' type='audio/mpeg' /><source src='media/audio/GameBoyColor.ogg' type='audio/ogg' /><source src='media/audio/GameBoyColor.wav' type='audio/wav' /><p>The audio content is not supported or has been blocked.  You can download a file <a href='media/audio/gameBoyColor'>here</a>.</p></audio></div>"}
 );
 var myCart = new Array();
 var cartLength = 0;
@@ -79,7 +79,7 @@ function resetShop(){
   for (i=0;i<products.length;i++){
     addItem(products[i].prodname, products[i].cost, products[i].info);
   }
-  document.getElementById('storageNotice').innerHTML = 'The default products (minus custom media) have been restored.'
+  document.getElementById('storageNotice').innerHTML = 'The default products have been restored.'
 }
 
 function viewCart(){
@@ -471,10 +471,10 @@ document.getElementById('btn1').addEventListener('click', scrollImage);
 document.getElementById('btn2').addEventListener('click', scrollImage);
 document.getElementById('btn3').addEventListener('click', scrollImage);
 */
-document.getElementById('pauseResume').addEventListener('click', scrollImage);
+//document.getElementById('pauseResume').addEventListener('click', scrollImage);
 
-function scrollImage(){
-  switch (this.id){
+function scrollImage(id){
+  switch (id){
     case 'pauseResume':
       document.getElementById('scrollImages').classList.toggle('paused');
       break;
