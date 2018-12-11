@@ -52,9 +52,9 @@ function clearCart(){
   //Could also use function to only clear the cart storage if mulitple things are stored
   document.getElementById("viewCart").innerHTML = "";
   document.getElementById("total").innerHTML = "0"
-  document.getElementById("jsonCart").innerHTML = "";
-  document.getElementById("importCart").innerHTML = "";
-  document.getElementById("total2").innerHTML = "0";
+  //document.getElementById("jsonCart").innerHTML = "";
+  //document.getElementById("importCart").innerHTML = "";
+  //document.getElementById("total2").innerHTML = "0";
   document.getElementById("storageNotice").innerHTML = "Local Storage Cleared.";
   //Clear cart in API
 }
@@ -267,7 +267,7 @@ function addItem(newProduct,newCost,info){
     cell2.innerHTML = newProduct + '<span onmouseout="displayInfo(this)" onmouseover="displayInfo(this)">&#9432</span>';
     cell3.innerHTML = newCost;
     cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
-    cell5.innerHTML = 'no additional info at this time.';
+    cell5.innerHTML = info;
     numOfProducts +=1;
     document.getElementById('customizeResult').innerHTML = 'Your item has been added.';
   }
@@ -343,7 +343,7 @@ function updateItem(newItemNumber,newProduct,newCost,info){//Need to prohibit up
     cell2.innerHTML = newProduct;
     cell3.innerHTML = newCost;
     //cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
-    cell5.innerHTML = 'no additional media is available.';
+    cell5.innerHTML = info;
     document.getElementById('customizeResult').innerHTML = 'The selected item has been updated.';
   }
 }
@@ -357,20 +357,21 @@ function updateStyles(bgColor,fontColor,productsBgColor){
   document.body.style.backgroundColor = bgColor;
   document.body.style.color = fontColor;
   document.body.style.backgroundImage = 'none';
+
   document.getElementsByClassName('shopTable')[0].style.backgroundColor = productsBgColor;
   //document.getElementsByClassName('shopTable')[0].style.Color = productsFontColor;
 }
 
 function customizeShop(action){
   var myForm = document.getElementById('customize');
-  var newItemNumber = parseInt(myForm.elements[0].value);
-  var newProduct = myForm.elements[1].value;
-  var newCost = parseInt(myForm.elements[2].value);
-  var info = myForm.elements[3].value;
-  var bgColor  = myForm.elements[4].value;
-  var fontColor = myForm.elements[5].value;
-  var productsBgColor = myForm.elements[6].value;
-  var productsFontColor = myForm.elements[7].value;
+  var newItemNumber = parseInt(myForm.elements[1].value);
+  var newProduct = myForm.elements[2].value;
+  var newCost = parseInt(myForm.elements[3].value);
+  var info = myForm.elements[4].value;
+  //var bgColor  = myForm.elements[5].value;
+  //var fontColor = myForm.elements[6].value;
+  //var productsBgColor = myForm.elements[7].value;
+  //var productsFontColor = myForm.elements[8].value;
   switch (action) {
     case 'addItem':
       addItem(newProduct,newCost,info);
@@ -381,10 +382,10 @@ function customizeShop(action){
     case 'updateItem':
       updateItem(newItemNumber,newProduct,newCost,info);
       break;
-    case 'updateStyles':
-      updateStyles(bgColor,fontColor,productsBgColor);
+    //case 'updateStyles':
+    //  updateStyles(bgColor,fontColor,productsBgColor);
       //document.getElementById('customizeResult').innerHTML = 'Action build in progress';
-      break;
+    //  break;
     default:
       document.getElementById('customizeResult').innerHTML = 'Something went wrong with your request';
       break;
@@ -519,14 +520,14 @@ function NextView(){
   var productNameLabel = document.getElementById('productNameLabel');
   var costLabel = document.getElementById('costLabel');
   var infoLabel = document.getElementById('infoLabel');
-  var bgColorLabel = document.getElementById('bgColorLabel');
-  var fontColorLabel = document.getElementById('fontColorLabel');
-  var shopBgColorLabel = document.getElementById('shopBgColorLabel');
+  //var bgColorLabel = document.getElementById('bgColorLabel');
+  //var fontColorLabel = document.getElementById('fontColorLabel');
+  //var shopBgColorLabel = document.getElementById('shopBgColorLabel');
   var addItem = document.getElementById('addItem');
   var removeItem = document.getElementById('removeItem');
   var updateItem = document.getElementById('updateItem');
-  var updateStyles = document.getElementById('updateStyles');
-  var updateStyles = document.getElementById('astrix');
+  //var updateStyles = document.getElementById('updateStyles');
+  var astrix = document.getElementById('astrix');
   switch (choice) {
     case 'Add an Item':
       itemNumberLabel.classList.remove('onScreen');
@@ -536,13 +537,13 @@ function NextView(){
       productNameLabel.classList.add('onScreen');
       costLabel.classList.add('onScreen');
       infoLabel.classList.add('onScreen');
-      bgColorLabel.classList.remove('onScreen');
-      fontColorLabel.classList.remove('onScreen');
-      shopBgColorLabel.classList.remove('onScreen');
+    //  bgColorLabel.classList.remove('onScreen');
+    //  fontColorLabel.classList.remove('onScreen');
+    //  shopBgColorLabel.classList.remove('onScreen');
       addItem.classList.add('onScreen');
       removeItem.classList.remove('onScreen');
       updateItem.classList.remove('onScreen');
-      updateStyles.classList.remove('onScreen');
+    //  updateStyles.classList.remove('onScreen');
       astrix.classList.add('onScreen');
       break;
     case 'Remove an Item':
@@ -550,13 +551,13 @@ function NextView(){
       productNameLabel.classList.remove('onScreen');
       costLabel.classList.remove('onScreen');
       infoLabel.classList.remove('onScreen');
-      bgColorLabel.classList.remove('onScreen');
-      fontColorLabel.classList.remove('onScreen');
-      shopBgColorLabel.classList.remove('onScreen');
+    //  bgColorLabel.classList.remove('onScreen');
+    //  fontColorLabel.classList.remove('onScreen');
+    //  shopBgColorLabel.classList.remove('onScreen');
       addItem.classList.remove('onScreen');
       removeItem.classList.add('onScreen');
       updateItem.classList.remove('onScreen');
-      updateStyles.classList.remove('onScreen');
+    //  updateStyles.classList.remove('onScreen');
       astrix.classList.add('onScreen');
       break;
     case 'Update an Item':
@@ -564,13 +565,13 @@ function NextView(){
       productNameLabel.classList.add('onScreen');
       costLabel.classList.add('onScreen');
       infoLabel.classList.add('onScreen');
-      bgColorLabel.classList.remove('onScreen');
-      fontColorLabel.classList.remove('onScreen');
-      shopBgColorLabel.classList.remove('onScreen');
+    //  bgColorLabel.classList.remove('onScreen');
+    //  fontColorLabel.classList.remove('onScreen');
+    //  shopBgColorLabel.classList.remove('onScreen');
       addItem.classList.remove('onScreen');
       removeItem.classList.remove('onScreen');
       updateItem.classList.add('onScreen');
-      updateStyles.classList.remove('onScreen');
+    //  updateStyles.classList.remove('onScreen');
       astrix.classList.add('onScreen');
       break;
     case 'Update Shop Styles':
@@ -578,15 +579,13 @@ function NextView(){
       productNameLabel.classList.remove('onScreen');
       costLabel.classList.remove('onScreen');
       infoLabel.classList.remove('onScreen');
-      bgColorLabel.classList.add('onScreen');
-      fontColorLabel.classList.add('onScreen');
-      shopBgColorLabel.classList.add('onScreen');
+    //  bgColorLabel.classList.add('onScreen');
+    //  fontColorLabel.classList.add('onScreen');
+    //  shopBgColorLabel.classList.add('onScreen');
       addItem.classList.remove('onScreen');
       removeItem.classList.remove('onScreen');
       updateItem.classList.remove('onScreen');
-      updateStyles.classList.add('onScreen');//Why is this line not working!?
-      //Works fine when visibility is not changed...but stays invisible.
-      //Check browsers and history clear maybe.
+    //  updateStyles.classList.add('onScreen');
       astrix.classList.remove('onScreen');
       break;
     case '':
@@ -594,13 +593,13 @@ function NextView(){
       productNameLabel.classList.remove('onScreen');
       costLabel.classList.remove('onScreen');
       infoLabel.classList.remove('onScreen');
-      bgColorLabel.classList.remove('onScreen');
-      fontColorLabel.classList.remove('onScreen');
-      shopBgColorLabel.classList.remove('onScreen');
+    //  bgColorLabel.classList.remove('onScreen');
+    //  fontColorLabel.classList.remove('onScreen');
+    //  shopBgColorLabel.classList.remove('onScreen');
       addItem.classList.remove('onScreen');
       removeItem.classList.remove('onScreen');
       updateItem.classList.remove('onScreen');
-      updateStyles.classList.remove('onScreen');
+    //  updateStyles.classList.remove('onScreen');
       astrix.classList.remove('onScreen');
       break;
     default:

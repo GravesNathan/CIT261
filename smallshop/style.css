@@ -404,7 +404,7 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 .offScreen{
   position: relative;
   display: block;
-  visibility: hidden;
+  width: 100%;
   transition: transform 1s;
   -webkit-transition: -webkit-transform 1s;
   transform: translateX(110%);
@@ -415,7 +415,6 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 .onScreen{
     position: relative;
     display: block;
-    visibility: visible;
     transition: transform 1s;
     -webkit-transition: -webkit-transform 1s;
     transform: translateX(0px);
