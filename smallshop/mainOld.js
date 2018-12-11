@@ -267,9 +267,6 @@ function addItem(newProduct,newCost,info){
     cell2.innerHTML = newProduct + '<span onmouseout="displayInfo(this)" onmouseover="displayInfo(this)">&#9432</span>';
     cell3.innerHTML = newCost;
     cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
-    //This button id is not being corrected whenever an item is removed.  Because I rely on this id
-    //When adding to cart this is a problem!  I must either correct the Id when removing,
-    //or else reply on some other number.
     cell5.innerHTML = info;
     numOfProducts +=1;
     document.getElementById('customizeResult').innerHTML = 'Your item has been added.';
@@ -285,56 +282,17 @@ function removeItem(newItemNumber){
   if( (isNaN(newItemNumber)) || (newItemNumber >= numOfProducts) ){
     document.getElementById('customizeResult').innerHTML = 'Item Number cannot be blank and must be a valid item number to remove an item.';
   } else {
-    //document.getElementById('productsTable').deleteRow(newItemNumber+1);//plus one bc of header
-    //var row = '';
-    //numOfProducts -= 1 //decrease number of products by one
-    //i=newItemNumber; //start products array fix at index of item number
-    //while( i < (numOfProducts) ) {
-      //products[i] =  products[i+1];//This corrects all necessary indexes of products array.
-      //However, it effectively erases an item number preserving the other data.
+    document.getElementById('productsTable').deleteRow(newItemNumber+1);
+    var row = '';
+    numOfProducts -= 1
+    i=newItemNumber;
+    while( i < (numOfProducts) ) {
+      products[i] =  products[i+1];
       //if (newItemNumber )
-      //document.getElementById('productsTable').rows[i+1].cells[0].innerHTML = i;//This corrects the
-      //table display of "item number", but not the actual item numbers.  More importantly!  It is not
-      //correcting the id used for the button...Both should be fixed ideally.
-
-/*What if I
-1. Remove every entry in the products table on the display
-
-2. Instead of replacing item numbers, replace the prodname, cost, and info of products[i] with
-Those variables of products[i+1]
-3. Call add item function using the product[i] entry currently being worked on.
-Item 1 would need to be done first.
-Item 2 and 3 can be called within the while loop.  This could start at item 0 and work it's way up to products.length
-or numOfProducts.
-*/
-      var productsTable = document.getElementById('productsTable');
-      for (i=0;i<products.length;i++){
-        productsTable.deleteRow(1);//Clear entire table except headers, repeatedly delete row 1.
-        numOfProducts -= 1;//decrease this count so addItem can use it accurately. to re-create table button id's
-        //In theory  numOfProducts should be at 0 when we start to add table back in
-      }
-      for (i=newItemNumber;i<products.length-1;i++){//stopping 1 entry before end of products (Test)
-        //keeping same itemNumbers in each index.  Start with item to be replaced and work up to end
-        products[i].prodname = products[i+1].prodname;
-        products[i].cost = products[i+1].cost;
-        products[i].info = products[i+1].info;
-
-      }
-      products.length -= 1;//remove last entry of products.
-      //Add row visually for each product.
-      for (i=0;i<products.length;i++){
-        addItem(products[i].prodname, products[i].cost, products[i].info);
-      }
-
-      //i++;
+      document.getElementById('productsTable').rows[i+1].cells[0].innerHTML = i;
+      i++;
     }
-    //products.length -= 1;//This removes the last (now duplicate) index of products array.
-
-    //By the time I get here the item numbers don't match the array indexes or the
-    //item number on table.  addToCart is being passed the id of the element, which is
-    //an id set to the index of products
-
-
+    products.length -= 1;
     /* ********Need to work on removing items from cart eventually.
     Note when trying to add an item that is after the index of the one that was removed,
     It throws an error Need to fix
@@ -363,7 +321,7 @@ or numOfProducts.
     */
     document.getElementById('customizeResult').innerHTML = 'The selected item has been removed.';
   }
-//}
+}
 
 function updateItem(newItemNumber,newProduct,newCost,info){//Need to prohibit updating behond current num products "adding" is okay
   if( (newProduct == '') || (newItemNumber >= numOfProducts) || (isNaN(newCost)) || (isNaN(newItemNumber)) || (info == '') ){
