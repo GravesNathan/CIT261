@@ -277,26 +277,10 @@ function addItem(newProduct,newCost,info){
 
 }
 
-//When I removed item 2 but item 3 was avaialble with it's new index, I got an error trying to add to cart.
-//The error indicates that the product name is undefined from view cart.
-//When I remove an item that item needs to be removed from the users cart.
-//The items beyond that number need to be updated with their new numbers too.
 function removeItem(newItemNumber){
   if( (isNaN(newItemNumber)) || (newItemNumber >= numOfProducts) ){
     document.getElementById('customizeResult').innerHTML = 'Item Number cannot be blank and must be a valid item number to remove an item.';
   } else {
-    //document.getElementById('productsTable').deleteRow(newItemNumber+1);//plus one bc of header
-    //var row = '';
-    //numOfProducts -= 1 //decrease number of products by one
-    //i=newItemNumber; //start products array fix at index of item number
-    //while( i < (numOfProducts) ) {
-      //products[i] =  products[i+1];//This corrects all necessary indexes of products array.
-      //However, it effectively erases an item number preserving the other data.
-      //if (newItemNumber )
-      //document.getElementById('productsTable').rows[i+1].cells[0].innerHTML = i;//This corrects the
-      //table display of "item number", but not the actual item numbers.  More importantly!  It is not
-      //correcting the id used for the button...Both should be fixed ideally.
-
 /*What if I
 1. Remove every entry in the products table on the display
 
@@ -318,49 +302,13 @@ or numOfProducts.
         products[i].prodname = products[i+1].prodname;
         products[i].cost = products[i+1].cost;
         products[i].info = products[i+1].info;
-
       }
       products.length -= 1;//remove last entry of products.
       //Add row visually for each product.
       for (i=0;i<products.length;i++){
         addItem(products[i].prodname, products[i].cost, products[i].info);
       }
-
-      //i++;
     }
-    //products.length -= 1;//This removes the last (now duplicate) index of products array.
-
-    //By the time I get here the item numbers don't match the array indexes or the
-    //item number on table.  addToCart is being passed the id of the element, which is
-    //an id set to the index of products
-
-
-    /* ********Need to work on removing items from cart eventually.
-    Note when trying to add an item that is after the index of the one that was removed,
-    It throws an error Need to fix
-    var toRemove = 0;
-    for (i in myCart){//if cart length is 5 then indexes are 0-4, so stop at the 5, hence < and not <=
-      if (myCart[i].itemNumber == newItemNumber){
-        console.log('mycart.ItemNumber = ' + myCart[i].itemNumber +' newItemNumber = '+ newItemNumber);
-        var j=i;
-        for (j; j<cartLength; j++){
-          console.log('myCart[j] = ' + myCart[j] +' myCart[j+1] = '+ myCart[j+1]);
-          myCart[j] = myCart[j+1];//brings next items in list down an index
-        }
-        toRemove =+ 1;
-        i--; //Repeat current i index to avoid skipping an item
-      } else if (myCart[i].itemNumber > newItemNumber){
-        myCart[i].itemNumber--; //Correct item number of indexes that were beyond existing one
-        cartLength--;//decrease cart length.
-      }
-      myCart.length -= toRemove; //remove items from end of list
-    }
-    //In reality I'd probably just store item numbers in the cart so the cart requires to update
-    //by pulling all other info from the database.  Previous item numbers could be archived and
-    //listed as not available, but the number can never be used again.
-    viewCart();
-    //also need to store new cart in local storage
-    */
     document.getElementById('customizeResult').innerHTML = 'The selected item has been removed.';
   }
 //}
