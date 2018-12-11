@@ -22,11 +22,16 @@ var products = new Array(
     {"itemNumber":2,"prodname":"Game Boy Color","cost":20,'info':'This is a Game Boy Color.'}
   );
 
+
 //Later, Add the function to automatically create the table based
 //on the number of products available for sale.
 //If possible have it dynamically create the labels to use with
 //the getElementById functions.
-
+var originalProducts = new Array(
+  {"itemNumber":0,"prodname":"Sega Genesis","cost":30,'info':'This is a Sega Genesis.'},
+  {"itemNumber":1,"prodname":"Super Nintendo","cost":30,'info':'This is a Super Nintendo.'},
+  {"itemNumber":2,"prodname":"Game Boy Color","cost":20,'info':'This is a Game Boy Color.'}
+);
 var myCart = new Array();
 var cartLength = 0;
 var i;
@@ -48,7 +53,10 @@ function addToCart(itemNum){//Add items to cart and increase cart length
 function clearCart(){
   myCart = [];
   cartLength = 0;
-  localStorage.clear();//Clear all local storage for page.
+  //localStorage.clear();//Clear all local storage for page.
+  //clear just the cart items
+  localStorage.removeItem('localCart');
+  localStorage.removeItem('localCartLength');
   //Could also use function to only clear the cart storage if mulitple things are stored
   document.getElementById("viewCart").innerHTML = "";
   document.getElementById("total").innerHTML = "0"
@@ -57,6 +65,21 @@ function clearCart(){
   //document.getElementById("total2").innerHTML = "0";
   document.getElementById("storageNotice").innerHTML = "Local Storage Cleared.";
   //Clear cart in API
+}
+
+function resetShop(){
+  for (i=0;i<products.length;i++){
+    productsTable.deleteRow(1);//Clear Shop before re-creating shop table
+  }
+  //set products and numOfProducts to original on page load, then re-create table
+  products = originalProducts;
+  numOfProducts = 0;
+  localStorage.removeItem('localProducts');
+  localStorage.removeItem('localNumOfProducts');
+  for (i=0;i<products.length;i++){
+    addItem(products[i].prodname, products[i].cost, products[i].info);
+  }
+  document.getElementById('storageNotice').innerHTML = 'The default products (minus custom media) have been restored.'
 }
 
 function viewCart(){
@@ -153,7 +176,7 @@ function retreiveCart(){
       //localCart exists, so load it into page.
       myCart = JSON.parse(localStorage.getItem('localCart'));
       cartLength = parseInt(localStorage.getItem('localCartLength'));
-      document.getElementById('storageNotice').innerHTML = ("Cart from previous visit has been loaded.");
+      document.getElementById('storageNotice').innerHTML = ("Cart and/or Shop from previous visit has been loaded.");
       viewCart();
     }
   } else{
@@ -163,14 +186,53 @@ function retreiveCart(){
 
 }
 
+/*******Store Changes to Shop**********/
+function storeShop(){
+  if (storageAvailable('localStorage')) {
+    //Convert cart to Json and store.  Retreiving a stored [object, object] was giving me undefined.
+    localStorage.setItem('localProducts',JSON.stringify(products));
+    //localStorage.setItem('localNumOfProducts',numOfProducts);//numOfProducts doesn't need to be
+    // stored.  It's re-created via addItem function during retreiveShop
+    document.getElementById('storageNotice').innerHTML =("Shop Changes have been saved to your browser");
+  }
+  else{
+    document.getElementById('storageNotice').innerHTML = ("local storage API is not suppported in your browser or your storage capacity is full.  Please enable localStorage in your browser to receive full benefits from this shop.");
+  }
+}
+
+//********Retreive from localAPI to show on page or store if desired in variable.
+function retreiveShop(){
+  if (storageAvailable('localStorage')) {
+    //We now know we can use storage.  Test if cart exists
+    if (localStorage.getItem('localProducts') === null){
+      //No changes to shop were found in storage so do nothing
+    } else {
+      //localCart exists, so load it into page.
+      products = JSON.parse(localStorage.getItem('localProducts'));
+      numOfProducts = 0;//start at zero so addItem works
+      for (i=0;i<3;i++){
+        productsTable.deleteRow(1);//Clear original Shop before re-creating shop table
+      }
+      //Create Shop Table from Local Storage Data
+      for (i=0;i<products.length;i++){
+        addItem(products[i].prodname, products[i].cost, products[i].info);
+      }
+    }
+    document.getElementById('storageNotice').innerHTML = ("Shop and/or Cart from previous visit has been loaded.");
+  } else{
+    //Browser or privacy setting doesn't support local storage.
+    document.getElementById('storageNotice').innerHTML = ("local storage API is not suppported in your browser or your storage capacity is full.  Please enable localStorage in your browser to receive full benefits from this shop.");
+  }
+}
+
 // Usage example: https://api.opendota.com/api/matches/271145478?api_key=YOUR-API-KEY
 //https://api.opendota.com/api/heroStats
 //**First we'll just get some stats.  Maybe later we'll let users select a hero to check stats.
 
 //Page On load, for Listeners and re-load of cart.
 function prepPage(){
+  loadingStarts();
   for(i in products){//Populate table
-    loadingStarts();
     document.getElementById("row"+i+"num").innerHTML = products[i].itemNumber;
     document.getElementById("row"+i+"name").innerHTML = products[i].prodname + '<span onmouseout="displayInfo(this)" onmouseover="displayInfo(this)">&#9432</span>';
     document.getElementById("row"+i+"cost").innerHTML = products[i].cost;
@@ -180,6 +242,7 @@ function prepPage(){
     document.getElementById('ajaxButton').addEventListener('click', getRequest);
     //document.getElementById('apiTest').addEventListener('click', getRequest);
   retreiveCart();
+  retreiveShop();
   var menuButton = document.getElementById('menuToggle');
   menuToggle(menuButton);
   shopEditorLoad();
@@ -273,6 +336,7 @@ function addItem(newProduct,newCost,info){
     cell5.innerHTML = info;
     numOfProducts +=1;
     document.getElementById('customizeResult').innerHTML = 'Your item has been added.';
+    storeShop();
   }
 
 }
@@ -310,6 +374,7 @@ or numOfProducts.
       }
     }
     document.getElementById('customizeResult').innerHTML = 'The selected item has been removed.';
+    storeShop();
   }
 //}
 
@@ -335,6 +400,7 @@ function updateItem(newItemNumber,newProduct,newCost,info){//Need to prohibit up
     //cell4.innerHTML = '<button id="'+ numOfProducts +'" type="button" onClick="addToCart(this.id);">Add to Cart</button>';
     cell5.innerHTML = info;
     document.getElementById('customizeResult').innerHTML = 'The selected item has been updated.';
+    storeShop();
   }
 }
 
