@@ -334,6 +334,7 @@ function addItem(newProduct,newCost,info){
     //When adding to cart this is a problem!  I must either correct the Id when removing,
     //or else reply on some other number.
     cell5.innerHTML = info;
+    cell5.classList.add('hideOnSmall');
     numOfProducts +=1;
     document.getElementById('customizeResult').innerHTML = 'Your item has been added.';
     storeShop();

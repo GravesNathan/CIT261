@@ -35,6 +35,18 @@ td img {
   height: auto;
 }
 
+td{
+  overflow-wrap: break-word;
+  text-overflow: clip;
+}
+
+
+@media only screen and (max-width:400px){
+  .shopTable{
+    table-layout: fixed;
+    width: 100%;
+  }
+}
 
 .imageScrollBtn{
   margin-left: auto;
@@ -49,11 +61,16 @@ td img {
 #pauseResume{
   border-radius: 50%;
   width: auto;
+  max-width: 100%;
 }
 
 .images{
   animation: slideImages 10s linear infinite;
   -webkit-animation: slideImages 10s linear infinite;
+}
+
+audio{
+  max-width: 100%;
 }
 
 @keyframes slideImages{

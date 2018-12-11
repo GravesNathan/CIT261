@@ -33,12 +33,12 @@
     <div id='editShopContent'>
       <h1>Shop Editor</h1>
     <p>
-      This site is designed to allow you to create a very simple shop for demonstration purposes only.
-      We start you off with a few default items in the table below.  You can use the forms below
-      to make modifications to the shop content or the page itself.  When you are satisfied use the
-      menu icon to select "Shop Home" in order to view what the end customer would see.
+      This site is designed to help you to create a very simple demo shop.
+      Three default items have been included in the table at the <u>bottom of this page</u>.
+      You can use the form below to make modifications to the shop.
+      Selecting "Shop Home" in the menu bar will bring you to an end user view.
       <br /><br />
-      You may reset the shop to it's defaul items anytime with this button.
+      You may reset the shop to it's default items anytime with this button.
       <button onclick='resetShop()'>Reset Shop</button>
     </p>
 
@@ -136,7 +136,6 @@
 
     <div id='shopHomeContent'>
       <p id="storageNotice" style="color:yellow;"></p>
-      <p>
       <table id='productsTable' class='shopTable'>
         <tr>
           <th>
@@ -229,17 +228,10 @@
       <p id='shopTotal'>Total: <b id="total">0</b></p>
       <button type="button" onclick="clearCart();">Clear Cart</button>
       </div><!--End of shopHome-->
-      <br /><br />
-
-
-
-
-<br /><br />
         <!--Edited out until a true export/import is used
         <button type="button" onclick="exportCart();">Export Cart</button>
         <button type="button" onclick="importCart();">Import Cart</button>
         -->
-    </p>
 
     <!--I'm curious why it doesn't show the Braces on ourside according to the braces format-->
     <!--Commented out until a true export/import is added.
@@ -251,7 +243,10 @@
 
     <!--*********Character Select Page************-->
   <div id='selectCharacterContent'>
+  <h2>Popular Characters in Dota 2</h2>
   <p>
+    You can use the Dota 2 API with the button below.  It pulls a list of popular
+    Dota2 characters, their attributes, and common roles they play.<br /><br />
     <button id="ajaxButton" type="button">Get Dota 2 Stats</button>
   </p>
   <p id='gameStats'>
