@@ -323,6 +323,7 @@ body{
 /*set default text color for almost everything to white*/
 p, body, div, table, tr, td, form, a{
   color: white;
+  font-size: 1em;
 }
 
 .slideWrapper{
@@ -434,10 +435,13 @@ input, select{
   margin-top: 1em;
 }
 
+button{
+  min-height: 3em;
+}
 
 @media (max-width:600px){
   .hideOnSmall{ display:none;}
-}
+
 
 @media (max-width:400px){
   .main{
