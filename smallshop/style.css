@@ -18,16 +18,12 @@ and displays their user avitar, then it can say welcome back.
 
 td{
   width:auto;
-  max-width: 50%;
+  /*max-width: 50%;*/
 }
 .media{
   max-height: 600px;
   overflow: hidden;
   white-space: nowrap;/*forces images to keep on one line*/
-}
-
-@media only screen and (max-width:600px){
-  .hideOnSmall{ display:none;}
 }
 
 td img {
@@ -37,18 +33,10 @@ td img {
 
 td{
   overflow-wrap: break-word;
-  text-overflow: clip;
+  /*text-overflow: clip;*/
 }
 
 
-/*
-@media only screen and (max-width:400px){
-  .shopTable{
-    table-layout: fixed;
-    width: 100%;
-  }
-}
-*/
 
 .imageScrollBtn{
   margin-left: auto;
@@ -111,7 +99,7 @@ audio{
 }
 /******need to add stuff for buttons still ******/
 
-#main{
+.main{
   width: 80%;
   position: relative;
   margin-left: auto;
@@ -279,10 +267,11 @@ body{
   z-index: 5;
   background-position: left top;
   background-size: cover;
-  height: 100%;
-  width: 100%;
+  height: 110%;
+  width: 110%;
   position: fixed;
   opacity: .99;
+  /*If top gaps appear transform up a tad*/
 }
 
 
@@ -443,4 +432,21 @@ The HTML code for the i is \0024D8 in CSS (ASCII?)*/
 
 input, select{
   margin-top: 1em;
+}
+
+
+@media (max-width:600px){
+  .hideOnSmall{ display:none;}
+}
+
+@media (max-width:400px){
+  .main{
+    width: 88%;
+    float: right;
+  }
+
+  .shopTable{
+    width: 100%;
+  }
+
 }
