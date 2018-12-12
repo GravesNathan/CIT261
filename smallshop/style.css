@@ -436,7 +436,7 @@ input, select{
 }
 
 button{
-  min-height: 3em;
+  min-width: 90px;
 }
 
 @media (max-width:600px){
